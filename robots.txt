@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://alessvon.github.io/coderhouse-proyecto/sitemap.xml

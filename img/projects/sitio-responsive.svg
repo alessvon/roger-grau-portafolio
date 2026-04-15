@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 220" role="img" aria-labelledby="title">
+  <title id="title">Vista previa Sitio Responsive</title>
+  <rect width="400" height="220" fill="#0ea5e9"/>
+  <rect x="20" y="24" width="240" height="156" fill="#ffffff" opacity="0.2"/>
+  <rect x="274" y="24" width="106" height="66" fill="#ffffff" opacity="0.35"/>
+  <rect x="274" y="102" width="106" height="78" fill="#ffffff" opacity="0.5"/>
+  <text x="20" y="204" fill="#ffffff" font-family="Arial, sans-serif" font-size="20">Sitio Responsive</text>
+</svg>

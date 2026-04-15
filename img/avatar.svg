@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 260" role="img" aria-labelledby="title desc">
+  <title id="title">Avatar de Roger Grau</title>
+  <desc id="desc">Ilustracion simple de perfil profesional para portfolio.</desc>
+  <rect width="260" height="260" fill="#141414"/>
+  <circle cx="130" cy="92" r="40" fill="#E8FF00"/>
+  <path d="M50 230c6-52 34-78 80-78s74 26 80 78" fill="#0C0C0C" stroke="#E8FF00" stroke-width="8"/>
+  <rect x="96" y="116" width="68" height="8" fill="#0C0C0C"/>
+</svg>

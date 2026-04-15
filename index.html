@@ -21,14 +21,14 @@
   <meta property="og:url"         content="https://alessvon.github.io/coderhouse-proyecto/" />
   <meta property="og:title"       content="Roger Grau | Product Engineer" />
   <meta property="og:description" content="Portfolio de Roger Grau, Product Engineer. Diseño de producto y desarrollo frontend — HTML, CSS, Bootstrap y JavaScript." />
-  <meta property="og:image"       content="https://placehold.co/1200x630/0C0C0C/E8FF00?text=Roger+Grau+%E2%80%94+Product+Engineer" />
+  <meta property="og:image"       content="https://alessvon.github.io/coderhouse-proyecto/img/og-home.svg" />
   <meta property="og:locale"      content="es_MX" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card"        content="summary_large_image" />
   <meta name="twitter:title"       content="Roger Grau | Product Engineer" />
   <meta name="twitter:description" content="Portfolio de Roger Grau, Product Engineer. Diseño de producto y desarrollo frontend — HTML, CSS, Bootstrap y JavaScript." />
-  <meta name="twitter:image"       content="https://placehold.co/1200x630/0C0C0C/E8FF00?text=Roger+Grau+%E2%80%94+Product+Engineer" />
+  <meta name="twitter:image"       content="https://alessvon.github.io/coderhouse-proyecto/img/og-home.svg" />
 
   <!-- Preconnect para acelerar carga de fuentes -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -113,7 +113,7 @@
           <div class="col-lg-5 text-center">
             <figure class="mb-0">
               <img
-                src="img/avatar.png"
+                src="img/avatar.svg"
                 alt="Avatar 3D de Roger Grau, Product Engineer — personaje animado sosteniendo tablet y stylus"
                 class="avatar-img"
                 id="avatar-img"
@@ -147,17 +147,23 @@
             </ul>
 
             <!-- Redes sociales -->
-            <div class="d-flex gap-3" role="list" aria-label="Redes sociales">
-              <a href="https://github.com/alessvon" class="social-btn" target="_blank" rel="noopener" role="listitem" aria-label="GitHub">
-                <i class="bi bi-github" aria-hidden="true"></i>
-              </a>
-              <a href="https://www.linkedin.com/in/roger-aless/" class="social-btn" target="_blank" rel="noopener" role="listitem" aria-label="LinkedIn">
-                <i class="bi bi-linkedin" aria-hidden="true"></i>
-              </a>
-              <a href="https://wa.me/525642052544" class="social-btn" target="_blank" rel="noopener" role="listitem" aria-label="WhatsApp">
-                <i class="bi bi-whatsapp" aria-hidden="true"></i>
-              </a>
-            </div>
+            <ul class="list-unstyled d-flex gap-3 mb-0" aria-label="Redes sociales">
+              <li>
+                <a href="https://github.com/alessvon" class="social-btn" target="_blank" rel="noopener" aria-label="GitHub">
+                  <i class="bi bi-github" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.linkedin.com/in/roger-aless/" class="social-btn" target="_blank" rel="noopener" aria-label="LinkedIn">
+                  <i class="bi bi-linkedin" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li>
+                <a href="https://wa.me/525642052544" class="social-btn" target="_blank" rel="noopener" aria-label="WhatsApp">
+                  <i class="bi bi-whatsapp" aria-hidden="true"></i>
+                </a>
+              </li>
+            </ul>
           </div>
 
         </div>
@@ -232,7 +238,7 @@
             <article class="project-card h-100">
               <div class="project-img">
                 <img
-                  src="https://placehold.co/400x200/6c63ff/ffffff?text=Landing+Page"
+                  src="img/projects/landing-page.svg"
                   alt="Captura del Proyecto 1: landing page con HTML y CSS"
                   class="project-thumb-img"
                   width="400"
@@ -248,8 +254,8 @@
                   <li><span class="tech-badge">CSS</span></li>
                 </ul>
                 <div class="d-flex gap-2">
-                  <a href="#" class="btn btn-sm btn-outline-secondary" aria-label="Ver código de Landing Page" aria-disabled="true"><i class="bi bi-github me-1" aria-hidden="true"></i>Código</a>
-                  <a href="#" class="btn btn-sm btn-accent" aria-label="Ver demo de Landing Page" aria-disabled="true"><i class="bi bi-box-arrow-up-right me-1" aria-hidden="true"></i>Demo</a>
+                  <button type="button" class="btn btn-sm btn-outline-secondary disabled" disabled aria-label="Código de Landing Page no disponible" title="Código disponible próximamente"><i class="bi bi-github me-1" aria-hidden="true"></i>Código</button>
+                  <button type="button" class="btn btn-sm btn-accent disabled" disabled aria-label="Demo de Landing Page no disponible" title="Demo disponible próximamente"><i class="bi bi-box-arrow-up-right me-1" aria-hidden="true"></i>Demo</button>
                 </div>
               </div>
             </article>
@@ -260,7 +266,7 @@
             <article class="project-card h-100">
               <div class="project-img project-img-2">
                 <img
-                  src="https://placehold.co/400x200/0ea5e9/ffffff?text=Sitio+Responsive"
+                  src="img/projects/sitio-responsive.svg"
                   alt="Captura del Proyecto 2: sitio responsive con Bootstrap"
                   class="project-thumb-img"
                   width="400"
@@ -276,8 +282,8 @@
                   <li><span class="tech-badge">CSS</span></li>
                 </ul>
                 <div class="d-flex gap-2">
-                  <a href="#" class="btn btn-sm btn-outline-secondary" aria-label="Ver código de Sitio Responsive" aria-disabled="true"><i class="bi bi-github me-1" aria-hidden="true"></i>Código</a>
-                  <a href="#" class="btn btn-sm btn-accent" aria-label="Ver demo de Sitio Responsive" aria-disabled="true"><i class="bi bi-box-arrow-up-right me-1" aria-hidden="true"></i>Demo</a>
+                  <button type="button" class="btn btn-sm btn-outline-secondary disabled" disabled aria-label="Código de Sitio Responsive no disponible" title="Código disponible próximamente"><i class="bi bi-github me-1" aria-hidden="true"></i>Código</button>
+                  <button type="button" class="btn btn-sm btn-accent disabled" disabled aria-label="Demo de Sitio Responsive no disponible" title="Demo disponible próximamente"><i class="bi bi-box-arrow-up-right me-1" aria-hidden="true"></i>Demo</button>
                 </div>
               </div>
             </article>
@@ -288,7 +294,7 @@
             <article class="project-card h-100">
               <div class="project-img project-img-3">
                 <img
-                  src="https://placehold.co/400x200/10b981/ffffff?text=App+JS"
+                  src="img/projects/app-js.svg"
                   alt="Captura del Proyecto 3: aplicación interactiva con JavaScript"
                   class="project-thumb-img"
                   width="400"
@@ -304,8 +310,8 @@
                   <li><span class="tech-badge">HTML</span></li>
                 </ul>
                 <div class="d-flex gap-2">
-                  <a href="#" class="btn btn-sm btn-outline-secondary" aria-label="Ver código de App Interactiva" aria-disabled="true"><i class="bi bi-github me-1" aria-hidden="true"></i>Código</a>
-                  <a href="#" class="btn btn-sm btn-accent" aria-label="Ver demo de App Interactiva" aria-disabled="true"><i class="bi bi-box-arrow-up-right me-1" aria-hidden="true"></i>Demo</a>
+                  <button type="button" class="btn btn-sm btn-outline-secondary disabled" disabled aria-label="Código de App Interactiva no disponible" title="Código disponible próximamente"><i class="bi bi-github me-1" aria-hidden="true"></i>Código</button>
+                  <button type="button" class="btn btn-sm btn-accent disabled" disabled aria-label="Demo de App Interactiva no disponible" title="Demo disponible próximamente"><i class="bi bi-box-arrow-up-right me-1" aria-hidden="true"></i>Demo</button>
                 </div>
               </div>
             </article>
@@ -329,7 +335,7 @@
         <div class="text-center mb-5">
           <span class="badge-section">Contacto</span>
           <h2 id="titulo-contacto" class="display-6 fw-bold mt-2 section-heading" data-num="04">¡Hablemos!</h2>
-          <p class="text-muted mt-2">¿Tenés un proyecto en mente? Escribime.</p>
+          <p class="text-muted mt-2">¿Tienes un proyecto en mente? Escríbeme.</p>
         </div>
 
         <div class="row justify-content-center g-5">

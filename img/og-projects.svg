@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="title">
+  <title id="title">Proyectos de Roger Grau</title>
+  <rect width="1200" height="630" fill="#0C0C0C"/>
+  <rect x="80" y="80" width="1040" height="470" fill="none" stroke="#E8FF00" stroke-width="4"/>
+  <text x="120" y="290" fill="#E8FF00" font-family="Arial, sans-serif" font-size="74" font-weight="700">Proyectos</text>
+  <text x="120" y="370" fill="#E8E6E0" font-family="Arial, sans-serif" font-size="40">Portfolio de Roger Grau</text>
+</svg>

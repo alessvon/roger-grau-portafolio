@@ -73,6 +73,8 @@ $project-gradients: (
 
   .d-flex:last-child {
     margin-top: auto;
+    flex-wrap: wrap;
+    row-gap: 0.5rem;
   }
 }
 

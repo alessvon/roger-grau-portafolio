@@ -32,7 +32,6 @@ body {
   line-height: 1.7;
   background-color: #0C0C0C;
   color: #E8E6E0;
-  overflow-x: hidden;
 }
 
 section[id],
@@ -311,6 +310,8 @@ p {
 }
 .project-body .d-flex:last-child {
   margin-top: auto;
+  flex-wrap: wrap;
+  row-gap: 0.5rem;
 }
 
 .project-category {
@@ -542,6 +543,17 @@ p {
   }
   .skill-category {
     display: none;
+  }
+  #navbar .navbar-brand {
+    font-size: 0.68rem;
+    letter-spacing: 1px;
+  }
+  #navbar .navbar-nav {
+    padding-top: 0.75rem;
+    padding-bottom: 0.5rem;
+  }
+  #navbar .nav-link {
+    padding: 0.55rem 0.75rem;
   }
 }
 @media (max-width: 479.98px) {

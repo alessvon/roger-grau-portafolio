@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 220" role="img" aria-labelledby="title">
+  <title id="title">Vista previa E-commerce UI</title>
+  <rect width="400" height="220" fill="#8b5cf6"/>
+  <rect x="20" y="24" width="360" height="28" fill="#ffffff" opacity="0.85"/>
+  <rect x="20" y="66" width="110" height="110" fill="#ffffff" opacity="0.25"/>
+  <rect x="144" y="66" width="110" height="110" fill="#ffffff" opacity="0.35"/>
+  <rect x="268" y="66" width="110" height="110" fill="#ffffff" opacity="0.45"/>
+  <text x="20" y="202" fill="#ffffff" font-family="Arial, sans-serif" font-size="20">E-commerce UI</text>
+</svg>
