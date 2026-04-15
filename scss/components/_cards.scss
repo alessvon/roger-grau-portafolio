@@ -78,8 +78,7 @@ $project-gradients: (
 
 // Categoría — monospace sobre fondo blanco
 .project-category {
-  @include mx.mono-label(0.68rem, 0.5px);
-  font-weight: 400;
+  @include mx.mono-label(0.68rem, 0.5px, 400);
   color: vars.$color-accent-on-light;
 }
 

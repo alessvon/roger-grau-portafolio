@@ -2,15 +2,25 @@
    main.js — Lógica general del portfolio
 ============================================================ */
 
+/* ── 0. Avatar fallback ─────────────────────────────────── */
+const avatarImg = document.getElementById('avatar-img');
+if (avatarImg) {
+  avatarImg.addEventListener('error', () => {
+    avatarImg.classList.add('d-none');
+    const fallback = document.getElementById('avatar-fallback');
+    if (fallback) fallback.classList.remove('d-none');
+  });
+}
+
 /* ── 1. Navbar: sombra al hacer scroll ──────────────────── */
 const navbar = document.getElementById('navbar');
 
 window.addEventListener('scroll', () => {
   if (window.scrollY > 50) {
-    navbar.style.background = 'rgba(15, 15, 26, 0.97)';
+    navbar.style.background = 'rgba(12, 12, 12, 0.97)';
     navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.45)';
   } else {
-    navbar.style.background = 'rgba(15, 15, 26, 0.85)';
+    navbar.style.background = 'rgba(12, 12, 12, 0.85)';
     navbar.style.boxShadow = 'none';
   }
 });

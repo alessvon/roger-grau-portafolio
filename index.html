@@ -5,7 +5,30 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Portfolio de Roger Grau, Product Engineer. Diseño de producto y desarrollo frontend — HTML, CSS, Bootstrap y JavaScript." />
+  <meta name="author" content="Roger Grau" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#0C0C0C" />
   <title>Roger Grau | Product Engineer</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230C0C0C'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='monospace' font-size='20' fill='%23E8FF00'>R</text></svg>" type="image/svg+xml" />
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://alessvon.github.io/coderhouse-proyecto/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content="https://alessvon.github.io/coderhouse-proyecto/" />
+  <meta property="og:title"       content="Roger Grau | Product Engineer" />
+  <meta property="og:description" content="Portfolio de Roger Grau, Product Engineer. Diseño de producto y desarrollo frontend — HTML, CSS, Bootstrap y JavaScript." />
+  <meta property="og:image"       content="https://placehold.co/1200x630/0C0C0C/E8FF00?text=Roger+Grau+%E2%80%94+Product+Engineer" />
+  <meta property="og:locale"      content="es_MX" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content="Roger Grau | Product Engineer" />
+  <meta name="twitter:description" content="Portfolio de Roger Grau, Product Engineer. Diseño de producto y desarrollo frontend — HTML, CSS, Bootstrap y JavaScript." />
+  <meta name="twitter:image"       content="https://placehold.co/1200x630/0C0C0C/E8FF00?text=Roger+Grau+%E2%80%94+Product+Engineer" />
 
   <!-- Preconnect para acelerar carga de fuentes -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -73,7 +96,7 @@
           Diseño y construyo productos digitales que conectan la visión de negocio con experiencias de usuario excepcionales.
         </p>
         <div class="d-flex justify-content-center gap-3 flex-wrap hero-animate hero-animate--delay-4">
-          <a href="proyectos.html" class="btn btn-accent btn-lg px-4">Ver proyectos</a>
+          <a href="proyectos.html" class="btn btn-accent btn-accent--pulse btn-lg px-4">Ver proyectos</a>
           <a href="https://wa.me/525642052544" class="btn btn-outline-light btn-lg px-4" target="_blank" rel="noopener">
             <i class="bi bi-whatsapp me-2" aria-hidden="true"></i>Contactarme
           </a>
@@ -93,11 +116,11 @@
                 src="img/avatar.png"
                 alt="Avatar 3D de Roger Grau, Product Engineer — personaje animado sosteniendo tablet y stylus"
                 class="avatar-img"
+                id="avatar-img"
                 width="260"
                 height="260"
-                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"
               />
-              <div class="avatar-emoji-fallback" style="display:none;">🧑‍💻</div>
+              <div class="avatar-emoji-fallback d-none" id="avatar-fallback">🧑‍💻</div>
               <figcaption class="visually-hidden">Foto de perfil</figcaption>
             </figure>
           </div>
@@ -204,7 +227,7 @@
 
         <div class="row g-4">
 
-          <!-- Proyecto 1 -->
+              <!-- Proyecto 1 -->
           <div class="col-md-6 col-lg-4">
             <article class="project-card h-100">
               <div class="project-img">
@@ -225,8 +248,8 @@
                   <li><span class="tech-badge">CSS</span></li>
                 </ul>
                 <div class="d-flex gap-2">
-                  <a href="#" class="btn btn-sm btn-outline-secondary"><i class="bi bi-github me-1" aria-hidden="true"></i>Código</a>
-                  <a href="#" class="btn btn-sm btn-accent"><i class="bi bi-box-arrow-up-right me-1" aria-hidden="true"></i>Demo</a>
+                  <a href="#" class="btn btn-sm btn-outline-secondary" aria-label="Ver código de Landing Page" aria-disabled="true"><i class="bi bi-github me-1" aria-hidden="true"></i>Código</a>
+                  <a href="#" class="btn btn-sm btn-accent" aria-label="Ver demo de Landing Page" aria-disabled="true"><i class="bi bi-box-arrow-up-right me-1" aria-hidden="true"></i>Demo</a>
                 </div>
               </div>
             </article>
@@ -253,8 +276,8 @@
                   <li><span class="tech-badge">CSS</span></li>
                 </ul>
                 <div class="d-flex gap-2">
-                  <a href="#" class="btn btn-sm btn-outline-secondary"><i class="bi bi-github me-1" aria-hidden="true"></i>Código</a>
-                  <a href="#" class="btn btn-sm btn-accent"><i class="bi bi-box-arrow-up-right me-1" aria-hidden="true"></i>Demo</a>
+                  <a href="#" class="btn btn-sm btn-outline-secondary" aria-label="Ver código de Sitio Responsive" aria-disabled="true"><i class="bi bi-github me-1" aria-hidden="true"></i>Código</a>
+                  <a href="#" class="btn btn-sm btn-accent" aria-label="Ver demo de Sitio Responsive" aria-disabled="true"><i class="bi bi-box-arrow-up-right me-1" aria-hidden="true"></i>Demo</a>
                 </div>
               </div>
             </article>
@@ -281,8 +304,8 @@
                   <li><span class="tech-badge">HTML</span></li>
                 </ul>
                 <div class="d-flex gap-2">
-                  <a href="#" class="btn btn-sm btn-outline-secondary"><i class="bi bi-github me-1" aria-hidden="true"></i>Código</a>
-                  <a href="#" class="btn btn-sm btn-accent"><i class="bi bi-box-arrow-up-right me-1" aria-hidden="true"></i>Demo</a>
+                  <a href="#" class="btn btn-sm btn-outline-secondary" aria-label="Ver código de App Interactiva" aria-disabled="true"><i class="bi bi-github me-1" aria-hidden="true"></i>Código</a>
+                  <a href="#" class="btn btn-sm btn-accent" aria-label="Ver demo de App Interactiva" aria-disabled="true"><i class="bi bi-box-arrow-up-right me-1" aria-hidden="true"></i>Demo</a>
                 </div>
               </div>
             </article>
@@ -338,7 +361,7 @@
 
           <!-- Formulario -->
           <div class="col-lg-7">
-            <form class="contact-form" novalidate>
+            <form class="contact-form" aria-labelledby="titulo-contacto" novalidate>
               <div class="mb-3">
                 <label for="nombre" class="form-label fw-semibold">Nombre</label>
                 <input

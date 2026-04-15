@@ -75,3 +75,8 @@
 }
 
 .bg-accent { background-color: vars.$color-accent !important; }
+
+// Variante con pulso de entrada para el CTA principal del hero
+.btn-accent--pulse {
+  animation: pulse-glow 2s vars.$ease 0.8s 2;
+}

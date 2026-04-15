@@ -13,8 +13,7 @@
   @include mx.transition(background-color, box-shadow);
 
   .navbar-brand {
-    @include mx.mono-label(0.75rem, 2px);
-    font-weight: 500;
+    @include mx.mono-label(0.75rem, 2px); // ya incluye font-weight: 500
     color: vars.$color-accent;
 
     &:hover {

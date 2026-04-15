@@ -58,10 +58,10 @@
 }
 
 // --- Label tipográfico monospace editorial ---
-@mixin mono-label($size: 0.72rem, $spacing: 3px) {
+@mixin mono-label($size: 0.72rem, $spacing: 3px, $weight: 500) {
   font-family: vars.$font-body;
   font-size: $size;
-  font-weight: 500;
+  font-weight: $weight;
   letter-spacing: $spacing;
   text-transform: uppercase;
 }

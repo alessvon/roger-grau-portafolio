@@ -1,3 +1,4 @@
+@use 'sass:math';
 @use '../abstracts/variables' as vars;
 @use '../abstracts/mixins' as mx;
 
@@ -116,10 +117,18 @@
   padding: 1rem 0;
   border-bottom: 1px solid rgba(vars.$color-text-light, 0.08);
   @include mx.transition(background-color, padding-left, padding-right);
+  animation: slide-up 0.5s vars.$ease both;
 
   &:hover {
     padding-left: 0.5rem;
     padding-right: 0.5rem;
+  }
+}
+
+// Animation delay escalonado para cada fila de habilidades
+@for $i from 1 through 8 {
+  .skill-row:nth-child(#{$i}) {
+    animation-delay: #{math.div($i - 1, 10) + 0.1}s;
   }
 }
 
