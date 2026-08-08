@@ -40,7 +40,7 @@
   <!-- Google Fonts: Syne + IBM Plex Mono + Libre Baskerville -->
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=IBM+Plex+Mono:wght@400;500&family=Libre+Baskerville&display=swap" rel="stylesheet" />
   <!-- Estilos personalizados -->
-  <link rel="stylesheet" href="css/style.css?v=20260808" />
+  <link rel="stylesheet" href="css/style.css?v=20260809" />
 </head>
 
 <body>
@@ -74,10 +74,9 @@
         <!-- Links de navegación -->
         <div class="collapse navbar-collapse" id="navMenu">
           <ul class="navbar-nav ms-auto gap-2">
-            <li class="nav-item"><a class="nav-link" href="#sobre-mi"><span class="nav-num">01</span> Sobre mí</a></li>
-            <li class="nav-item"><a class="nav-link" href="#habilidades"><span class="nav-num">02</span> Skills</a></li>
-            <li class="nav-item"><a class="nav-link" href="pages/proyectos.html"><span class="nav-num">03</span> Proyectos</a></li>
-            <li class="nav-item"><a class="nav-link" href="#contacto"><span class="nav-num">04</span> Contacto</a></li>
+            <li class="nav-item"><a class="nav-link" href="pages/sobre-mi.html"><span class="nav-num">01</span> Sobre mí</a></li>
+            <li class="nav-item"><a class="nav-link" href="pages/proyectos.html"><span class="nav-num">02</span> Proyectos</a></li>
+            <li class="nav-item"><a class="nav-link" href="#contacto"><span class="nav-num">03</span> Contacto</a></li>
           </ul>
         </div>
 
@@ -107,218 +106,59 @@
       </div>
     </section>
 
-    <!-- ── SOBRE MÍ ──────────────────────────────────────────── -->
-    <section id="sobre-mi" class="py-5 section-light" aria-labelledby="titulo-sobre-mi">
-      <div class="container py-4">
-        <div class="row align-items-center g-5">
-
-          <!-- Foto / avatar -->
-          <div class="col-lg-5 text-center">
-            <figure class="mb-0">
-              <img
-                src="img/avatar.svg"
-                alt="Avatar 3D de Roger Grau, Product Engineer — personaje animado sosteniendo tablet y stylus"
-                class="avatar-img"
-                id="avatar-img"
-                width="260"
-                height="260"
-              />
-              <div class="avatar-emoji-fallback d-none" id="avatar-fallback">🧑‍💻</div>
-              <figcaption class="visually-hidden">Foto de perfil</figcaption>
-            </figure>
-          </div>
-
-          <!-- Texto -->
-          <div class="col-lg-7">
-            <span class="badge-section">Sobre mí</span>
-            <h2 id="titulo-sobre-mi" class="display-6 fw-bold mt-2 mb-4 section-heading" data-num="01">¿Quién soy?</h2>
-            <p class="text-muted fs-5 mb-3">
-              Soy <strong>Roger Grau</strong>, Product Engineer con enfoque en el puente entre diseño y tecnología.
-              Me especializo en traducir necesidades de usuarios en productos digitales funcionales, bien diseñados y
-              con código limpio.
-            </p>
-            <p class="text-muted fs-5 mb-4">
-              Combino habilidades de diseño UX/UI con desarrollo frontend para crear experiencias coherentes de punta a punta,
-              actualmente cursando en <strong>Coderhouse</strong>.
-            </p>
-
-            <!-- Datos rápidos -->
-            <ul class="quick-facts list-unstyled mb-4">
-              <li><i class="bi bi-geo-alt-fill me-2 icon-muted"></i>CDMX, México</li>
-              <li><i class="bi bi-mortarboard-fill me-2 icon-muted"></i>Coderhouse — Desarrollo Web</li>
-              <li><i class="bi bi-translate me-2 icon-muted"></i>Español (nativo) · Inglés (intermedio)</li>
-            </ul>
-
-            <!-- Redes sociales -->
-            <ul class="list-unstyled d-flex gap-3 mb-0" aria-label="Redes sociales">
-              <li>
-                <a href="https://github.com/alessvon" class="social-btn" target="_blank" rel="noopener" aria-label="GitHub">
-                  <i class="bi bi-github" aria-hidden="true"></i>
-                </a>
-              </li>
-              <li>
-                <a href="https://www.linkedin.com/in/roger-aless/" class="social-btn" target="_blank" rel="noopener" aria-label="LinkedIn">
-                  <i class="bi bi-linkedin" aria-hidden="true"></i>
-                </a>
-              </li>
-              <li>
-                <a href="https://wa.me/525642052544" class="social-btn" target="_blank" rel="noopener" aria-label="WhatsApp">
-                  <i class="bi bi-whatsapp" aria-hidden="true"></i>
-                </a>
-              </li>
-            </ul>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ── HABILIDADES ───────────────────────────────────────── -->
-    <section id="habilidades" class="py-5 section-dark" aria-labelledby="titulo-habilidades">
-      <div class="container py-4 text-center">
-        <span class="badge-section">Skills</span>
-        <h2 id="titulo-habilidades" class="display-6 fw-bold mt-2 mb-5 section-heading" data-num="02">Mis Habilidades</h2>
-
-        <ul class="skill-list list-unstyled col-lg-8 mx-auto text-start" role="list">
-
-          <li class="skill-row">
-            <span class="skill-name">Figma</span>
-            <span class="skill-category">Diseño · Prototipado</span>
-          </li>
-
-          <li class="skill-row">
-            <span class="skill-name">UX Design</span>
-            <span class="skill-category">Research · Flujos</span>
-          </li>
-
-          <li class="skill-row">
-            <span class="skill-name">Design Systems</span>
-            <span class="skill-category">Componentes · Tokens</span>
-          </li>
-
-          <li class="skill-row">
-            <span class="skill-name">HTML5 &amp; CSS3</span>
-            <span class="skill-category">Semántica · Responsive</span>
-          </li>
-
-          <li class="skill-row">
-            <span class="skill-name">Bootstrap 5</span>
-            <span class="skill-category">UI Framework · Grid</span>
-          </li>
-
-          <li class="skill-row">
-            <span class="skill-name">JavaScript</span>
-            <span class="skill-category">ES6+ · DOM</span>
-          </li>
-
-          <li class="skill-row">
-            <span class="skill-name">Git &amp; GitHub</span>
-            <span class="skill-category">Versionado · Ramas</span>
-          </li>
-
-          <li class="skill-row">
-            <span class="skill-name">Product Thinking</span>
-            <span class="skill-category">Agile · Discovery</span>
-          </li>
-
-        </ul>
-      </div>
-    </section>
-
     <!-- ── PROYECTOS DESTACADOS (preview) ───────────────────── -->
     <section id="proyectos" class="py-5 section-light" aria-labelledby="titulo-proyectos">
       <div class="container py-4">
         <div class="text-center mb-5">
           <span class="badge-section">Trabajo</span>
-          <h2 id="titulo-proyectos" class="display-6 fw-bold mt-2 section-heading" data-num="03">Proyectos Destacados</h2>
+          <h2 id="titulo-proyectos" class="display-6 fw-bold mt-2 section-heading" data-num="02">Proyectos Destacados</h2>
           <p class="text-muted mt-2">Una selección de mis mejores trabajos.</p>
         </div>
 
-        <div class="row g-4">
+        <!-- Cards apiladas al hacer scroll (sticky stacking) -->
+        <div class="stack">
 
-              <!-- Proyecto 1 -->
-          <div class="col-md-6 col-lg-4">
-            <article class="project-card h-100">
-              <div class="project-img">
-                <img
-                  src="img/projects/landing-page.svg"
-                  alt="Captura del Proyecto 1: landing page con HTML y CSS"
-                  class="project-thumb-img"
-                  width="400"
-                  height="200"
-                  loading="lazy"
-                />
-              </div>
-              <div class="project-body">
-                <h3 class="h5 fw-bold mb-2">Landing Page</h3>
-                <p class="text-muted mb-3">Página de presentación de producto creada con HTML5 y CSS3, diseño responsive.</p>
-                <ul class="list-unstyled d-flex gap-2 flex-wrap mb-3">
-                  <li><span class="tech-badge">HTML</span></li>
-                  <li><span class="tech-badge">CSS</span></li>
-                </ul>
-                <div class="d-flex gap-2">
-                  <button type="button" class="btn btn-sm btn-outline-secondary disabled" disabled aria-label="Código de Landing Page no disponible" title="Código disponible próximamente"><i class="bi bi-github me-1" aria-hidden="true"></i>Código</button>
-                  <button type="button" class="btn btn-sm btn-accent disabled" disabled aria-label="Demo de Landing Page no disponible" title="Demo disponible próximamente"><i class="bi bi-box-arrow-up-right me-1" aria-hidden="true"></i>Demo</button>
-                </div>
-              </div>
-            </article>
-          </div>
+          <!-- Proyecto 1 -->
+          <a class="stack-card" href="pages/proyecto-landing-page.html" style="--card-img: url('img/projects/landing-page.svg')" aria-label="Ver proyecto Landing Page">
+            <div class="stack-card__content">
+              <span class="stack-card__num">01</span>
+              <h3 class="stack-card__title">Landing Page</h3>
+              <p class="stack-card__desc">Página de presentación de producto creada con HTML5 y CSS3, con diseño responsive y foco en la conversión.</p>
+              <ul class="stack-card__tech list-unstyled">
+                <li><span class="glass-chip">HTML</span></li>
+                <li><span class="glass-chip">CSS</span></li>
+              </ul>
+              <span class="stack-card__cta">Ver proyecto <i class="bi bi-arrow-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
 
           <!-- Proyecto 2 -->
-          <div class="col-md-6 col-lg-4">
-            <article class="project-card h-100">
-              <div class="project-img project-img-2">
-                <img
-                  src="img/projects/sitio-responsive.svg"
-                  alt="Captura del Proyecto 2: sitio responsive con Bootstrap"
-                  class="project-thumb-img"
-                  width="400"
-                  height="200"
-                  loading="lazy"
-                />
-              </div>
-              <div class="project-body">
-                <h3 class="h5 fw-bold mb-2">Sitio Responsive</h3>
-                <p class="text-muted mb-3">Sitio multipágina con diseño responsive usando Bootstrap 5 y grilla de columnas.</p>
-                <ul class="list-unstyled d-flex gap-2 flex-wrap mb-3">
-                  <li><span class="tech-badge">Bootstrap</span></li>
-                  <li><span class="tech-badge">CSS</span></li>
-                </ul>
-                <div class="d-flex gap-2">
-                  <button type="button" class="btn btn-sm btn-outline-secondary disabled" disabled aria-label="Código de Sitio Responsive no disponible" title="Código disponible próximamente"><i class="bi bi-github me-1" aria-hidden="true"></i>Código</button>
-                  <button type="button" class="btn btn-sm btn-accent disabled" disabled aria-label="Demo de Sitio Responsive no disponible" title="Demo disponible próximamente"><i class="bi bi-box-arrow-up-right me-1" aria-hidden="true"></i>Demo</button>
-                </div>
-              </div>
-            </article>
-          </div>
+          <a class="stack-card" href="pages/proyecto-sitio-responsive.html" style="--card-img: url('img/projects/sitio-responsive.svg')" aria-label="Ver proyecto Sitio Responsive">
+            <div class="stack-card__content">
+              <span class="stack-card__num">02</span>
+              <h3 class="stack-card__title">Sitio Responsive</h3>
+              <p class="stack-card__desc">Sitio multipágina construido con Bootstrap 5 y su sistema de grilla, adaptable a cualquier pantalla.</p>
+              <ul class="stack-card__tech list-unstyled">
+                <li><span class="glass-chip">Bootstrap</span></li>
+                <li><span class="glass-chip">CSS</span></li>
+              </ul>
+              <span class="stack-card__cta">Ver proyecto <i class="bi bi-arrow-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
 
           <!-- Proyecto 3 -->
-          <div class="col-md-6 col-lg-4">
-            <article class="project-card h-100">
-              <div class="project-img project-img-3">
-                <img
-                  src="img/projects/app-js.svg"
-                  alt="Captura del Proyecto 3: aplicación interactiva con JavaScript"
-                  class="project-thumb-img"
-                  width="400"
-                  height="200"
-                  loading="lazy"
-                />
-              </div>
-              <div class="project-body">
-                <h3 class="h5 fw-bold mb-2">App Interactiva</h3>
-                <p class="text-muted mb-3">Aplicación web interactiva con manipulación del DOM y eventos en JavaScript.</p>
-                <ul class="list-unstyled d-flex gap-2 flex-wrap mb-3">
-                  <li><span class="tech-badge">JavaScript</span></li>
-                  <li><span class="tech-badge">HTML</span></li>
-                </ul>
-                <div class="d-flex gap-2">
-                  <button type="button" class="btn btn-sm btn-outline-secondary disabled" disabled aria-label="Código de App Interactiva no disponible" title="Código disponible próximamente"><i class="bi bi-github me-1" aria-hidden="true"></i>Código</button>
-                  <button type="button" class="btn btn-sm btn-accent disabled" disabled aria-label="Demo de App Interactiva no disponible" title="Demo disponible próximamente"><i class="bi bi-box-arrow-up-right me-1" aria-hidden="true"></i>Demo</button>
-                </div>
-              </div>
-            </article>
-          </div>
+          <a class="stack-card" href="pages/proyecto-app-interactiva.html" style="--card-img: url('img/projects/app-js.svg')" aria-label="Ver proyecto App Interactiva">
+            <div class="stack-card__content">
+              <span class="stack-card__num">03</span>
+              <h3 class="stack-card__title">App Interactiva</h3>
+              <p class="stack-card__desc">Aplicación web interactiva con manipulación del DOM y manejo de eventos en JavaScript puro.</p>
+              <ul class="stack-card__tech list-unstyled">
+                <li><span class="glass-chip">JavaScript</span></li>
+                <li><span class="glass-chip">HTML</span></li>
+              </ul>
+              <span class="stack-card__cta">Ver proyecto <i class="bi bi-arrow-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
 
         </div>
 
@@ -337,7 +177,7 @@
       <div class="container py-4">
         <div class="text-center mb-5">
           <span class="badge-section">Contacto</span>
-          <h2 id="titulo-contacto" class="display-6 fw-bold mt-2 section-heading" data-num="04">¡Hablemos!</h2>
+          <h2 id="titulo-contacto" class="display-6 fw-bold mt-2 section-heading" data-num="03">¡Hablemos!</h2>
           <p class="text-muted mt-2">¿Tienes un proyecto en mente? Escríbeme.</p>
         </div>
 
@@ -431,8 +271,7 @@
   <footer class="footer-dark py-4 text-center" role="contentinfo">
     <div class="container">
       <nav class="footer-nav mb-3" aria-label="Links del footer">
-        <a href="#sobre-mi">Sobre mí</a>
-        <a href="#habilidades">Habilidades</a>
+        <a href="pages/sobre-mi.html">Sobre mí</a>
         <a href="pages/proyectos.html">Proyectos</a>
         <a href="#contacto">Contacto</a>
       </nav>
@@ -449,7 +288,7 @@
   <!-- Bootstrap Bundle JS (incluye Popper) -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <!-- Script principal -->
-  <script src="js/main.js?v=20260808" defer></script>
+  <script src="js/main.js?v=20260809" defer></script>
 
 </body>
 </html>

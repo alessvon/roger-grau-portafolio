@@ -19,27 +19,54 @@
   }
 }
 
-// ── GRILLA DE PROYECTOS ───────────────────────────────────────
-
-#projects-grid {
-  // CSS Grid nativo para el layout de la grilla
-  @include mx.respond-up(vars.$bp-lg) {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-
-    // Los .col-* de Bootstrap se anulan con grid explícito
-    > [class*='col-'] {
-      width: 100%;
-    }
-  }
-}
-
 // Transición para filtrado de proyectos via JS
 .project-item {
   @include mx.transition(opacity);
 
   &.hidden {
     display: none;
+  }
+}
+
+// ── CARRUSEL DE PROYECTOS (estilo Material Design 3) ──────────
+// Track horizontal con scroll-snap y "peek" del siguiente ítem.
+// Reutiliza el diseño de card de la home (.stack-card).
+
+.pcarousel {
+  display: flex;
+  gap: 1.25rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scroll-padding-inline: 0.25rem;
+  padding: 0.5rem 0 1.25rem;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+
+  // Scrollbar slim y discreta (desktop)
+  scrollbar-width: thin;
+  scrollbar-color: rgba(vars.$color-accent, 0.5) transparent;
+
+  &::-webkit-scrollbar {
+    height: 6px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: rgba(vars.$color-accent, 0.5);
+    border-radius: 999px;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  // La card reutiliza el diseño de la home, pero como ítem del carrusel:
+  // se anula el apilado vertical (sticky/margins) y se fija un ancho.
+  .stack-card {
+    position: static;
+    top: auto;
+    margin-top: 0;
+    flex: 0 0 auto;
+    width: clamp(280px, 78vw, 600px);
+    min-height: clamp(340px, 52vh, 440px);
+    scroll-snap-align: start;
   }
 }

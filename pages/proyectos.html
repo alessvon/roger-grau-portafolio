@@ -40,10 +40,13 @@
   <!-- Google Fonts: Syne + IBM Plex Mono + Libre Baskerville -->
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=IBM+Plex+Mono:wght@400;500&family=Libre+Baskerville&display=swap" rel="stylesheet" />
   <!-- Estilos personalizados -->
-  <link rel="stylesheet" href="../css/style.css?v=20260808" />
+  <link rel="stylesheet" href="../css/style.css?v=20260809" />
 </head>
 
 <body>
+
+  <!-- Malla de partículas interactiva — fondo global -->
+  <div id="particles-bg" aria-hidden="true"></div>
 
   <!-- ============================================================
        HEADER — Barra de navegación
@@ -71,10 +74,9 @@
         <!-- Links de navegación -->
         <div class="collapse navbar-collapse" id="navMenu">
           <ul class="navbar-nav ms-auto gap-2">
-            <li class="nav-item"><a class="nav-link" href="../index.html#sobre-mi"><span class="nav-num">01</span> Sobre mí</a></li>
-            <li class="nav-item"><a class="nav-link" href="../index.html#habilidades"><span class="nav-num">02</span> Skills</a></li>
-            <li class="nav-item"><a class="nav-link active" href="proyectos.html" aria-current="page"><span class="nav-num">03</span> Proyectos</a></li>
-            <li class="nav-item"><a class="nav-link" href="../index.html#contacto"><span class="nav-num">04</span> Contacto</a></li>
+            <li class="nav-item"><a class="nav-link" href="sobre-mi.html"><span class="nav-num">01</span> Sobre mí</a></li>
+            <li class="nav-item"><a class="nav-link active" href="proyectos.html" aria-current="page"><span class="nav-num">02</span> Proyectos</a></li>
+            <li class="nav-item"><a class="nav-link" href="../index.html#contacto"><span class="nav-num">03</span> Contacto</a></li>
           </ul>
         </div>
 
@@ -115,235 +117,100 @@
       <div class="container py-2">
         <h2 id="titulo-proyectos-grid" class="visually-hidden">Grilla de proyectos</h2>
 
-        <div class="row g-4" id="projects-grid">
+        <!-- Carrusel horizontal (scroll-snap estilo Material Design 3) -->
+        <div class="pcarousel" role="list" aria-label="Proyectos">
 
           <!-- ── Proyecto 1 ── -->
-          <div class="col-md-6 col-lg-4 project-item" data-category="html-css">
-            <article class="project-card h-100">
-              <div class="project-img">
-                <img
-                  src="../img/projects/landing-page.svg"
-                  alt="Captura de pantalla del proyecto Landing Page - diseño moderno con HTML y CSS"
-                  class="project-thumb-img"
-                  width="400"
-                  height="220"
-                  loading="lazy"
-                />
-              </div>
-              <div class="project-body">
-                <h3 class="h5 fw-bold mb-1">Landing Page</h3>
-                <p class="project-category small mb-3">HTML &amp; CSS</p>
-                <p class="text-muted mb-3">
-                  Página de presentación de producto con diseño moderno. Incluye sección hero,
-                  características, testimonios y llamada a la acción.
-                </p>
-                <!-- Tecnologías usadas -->
-                <ul class="list-unstyled d-flex gap-2 flex-wrap mb-4" aria-label="Tecnologías usadas">
-                  <li><span class="tech-badge">HTML5</span></li>
-                  <li><span class="tech-badge">CSS3</span></li>
-                  <li><span class="tech-badge">Flexbox</span></li>
-                </ul>
-                <div class="d-flex gap-2">
-                  <button type="button" class="btn btn-sm btn-outline-secondary disabled" disabled aria-label="Código de Landing Page no disponible" title="Código disponible próximamente">
-                    <i class="bi bi-github me-1" aria-hidden="true"></i>Código
-                  </button>
-                  <button type="button" class="btn btn-sm btn-accent disabled" disabled aria-label="Demo de Landing Page no disponible" title="Demo disponible próximamente">
-                    <i class="bi bi-box-arrow-up-right me-1" aria-hidden="true"></i>Demo
-                  </button>
-                </div>
-              </div>
-            </article>
-          </div>
+          <a class="stack-card project-item" role="listitem" data-category="html-css" href="proyecto-landing-page.html" style="--card-img: url('../img/projects/landing-page.svg')" aria-label="Ver proyecto Landing Page">
+            <div class="stack-card__content">
+              <span class="stack-card__num">01</span>
+              <h3 class="stack-card__title">Landing Page</h3>
+              <p class="stack-card__desc">Página de presentación de producto con diseño moderno: hero, características, testimonios y llamada a la acción.</p>
+              <ul class="stack-card__tech list-unstyled">
+                <li><span class="glass-chip">HTML5</span></li>
+                <li><span class="glass-chip">CSS3</span></li>
+                <li><span class="glass-chip">Flexbox</span></li>
+              </ul>
+              <span class="stack-card__cta">Ver proyecto <i class="bi bi-arrow-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
 
           <!-- ── Proyecto 2 ── -->
-          <div class="col-md-6 col-lg-4 project-item" data-category="bootstrap">
-            <article class="project-card h-100">
-              <div class="project-img project-img-2">
-                <img
-                  src="../img/projects/sitio-responsive.svg"
-                  alt="Captura de pantalla del proyecto Sitio Responsive con Bootstrap"
-                  class="project-thumb-img"
-                  width="400"
-                  height="220"
-                  loading="lazy"
-                />
-              </div>
-              <div class="project-body">
-                <h3 class="h5 fw-bold mb-1">Sitio Responsive</h3>
-                <p class="project-category small mb-3">Bootstrap</p>
-                <p class="text-muted mb-3">
-                  Sitio multipágina completamente responsive usando el sistema de grilla de Bootstrap 5
-                  con componentes de navegación y tarjetas.
-                </p>
-                <ul class="list-unstyled d-flex gap-2 flex-wrap mb-4" aria-label="Tecnologías usadas">
-                  <li><span class="tech-badge">Bootstrap 5</span></li>
-                  <li><span class="tech-badge">CSS3</span></li>
-                  <li><span class="tech-badge">Grid</span></li>
-                </ul>
-                <div class="d-flex gap-2">
-                  <button type="button" class="btn btn-sm btn-outline-secondary disabled" disabled aria-label="Código de Sitio Responsive no disponible" title="Código disponible próximamente">
-                    <i class="bi bi-github me-1" aria-hidden="true"></i>Código
-                  </button>
-                  <button type="button" class="btn btn-sm btn-accent disabled" disabled aria-label="Demo de Sitio Responsive no disponible" title="Demo disponible próximamente">
-                    <i class="bi bi-box-arrow-up-right me-1" aria-hidden="true"></i>Demo
-                  </button>
-                </div>
-              </div>
-            </article>
-          </div>
+          <a class="stack-card project-item" role="listitem" data-category="bootstrap" href="proyecto-sitio-responsive.html" style="--card-img: url('../img/projects/sitio-responsive.svg')" aria-label="Ver proyecto Sitio Responsive">
+            <div class="stack-card__content">
+              <span class="stack-card__num">02</span>
+              <h3 class="stack-card__title">Sitio Responsive</h3>
+              <p class="stack-card__desc">Sitio multipágina completamente responsive usando el sistema de grilla de Bootstrap 5 y sus componentes.</p>
+              <ul class="stack-card__tech list-unstyled">
+                <li><span class="glass-chip">Bootstrap 5</span></li>
+                <li><span class="glass-chip">CSS3</span></li>
+                <li><span class="glass-chip">Grid</span></li>
+              </ul>
+              <span class="stack-card__cta">Ver proyecto <i class="bi bi-arrow-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
 
           <!-- ── Proyecto 3 ── -->
-          <div class="col-md-6 col-lg-4 project-item" data-category="javascript">
-            <article class="project-card h-100">
-              <div class="project-img project-img-3">
-                <img
-                  src="../img/projects/app-js.svg"
-                  alt="Captura de pantalla del proyecto App Interactiva con JavaScript"
-                  class="project-thumb-img"
-                  width="400"
-                  height="220"
-                  loading="lazy"
-                />
-              </div>
-              <div class="project-body">
-                <h3 class="h5 fw-bold mb-1">App Interactiva</h3>
-                <p class="project-category small mb-3">JavaScript</p>
-                <p class="text-muted mb-3">
-                  Aplicación web con manipulación del DOM, eventos de usuario y lógica de
-                  filtrado dinámico sin frameworks externos.
-                </p>
-                <ul class="list-unstyled d-flex gap-2 flex-wrap mb-4" aria-label="Tecnologías usadas">
-                  <li><span class="tech-badge">JavaScript</span></li>
-                  <li><span class="tech-badge">HTML5</span></li>
-                  <li><span class="tech-badge">CSS3</span></li>
-                </ul>
-                <div class="d-flex gap-2">
-                  <button type="button" class="btn btn-sm btn-outline-secondary disabled" disabled aria-label="Código de App Interactiva no disponible" title="Código disponible próximamente">
-                    <i class="bi bi-github me-1" aria-hidden="true"></i>Código
-                  </button>
-                  <button type="button" class="btn btn-sm btn-accent disabled" disabled aria-label="Demo de App Interactiva no disponible" title="Demo disponible próximamente">
-                    <i class="bi bi-box-arrow-up-right me-1" aria-hidden="true"></i>Demo
-                  </button>
-                </div>
-              </div>
-            </article>
-          </div>
+          <a class="stack-card project-item" role="listitem" data-category="javascript" href="proyecto-app-interactiva.html" style="--card-img: url('../img/projects/app-js.svg')" aria-label="Ver proyecto App Interactiva">
+            <div class="stack-card__content">
+              <span class="stack-card__num">03</span>
+              <h3 class="stack-card__title">App Interactiva</h3>
+              <p class="stack-card__desc">Aplicación web con manipulación del DOM, eventos de usuario y filtrado dinámico sin frameworks externos.</p>
+              <ul class="stack-card__tech list-unstyled">
+                <li><span class="glass-chip">JavaScript</span></li>
+                <li><span class="glass-chip">HTML5</span></li>
+                <li><span class="glass-chip">CSS3</span></li>
+              </ul>
+              <span class="stack-card__cta">Ver proyecto <i class="bi bi-arrow-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
 
           <!-- ── Proyecto 4 ── -->
-          <div class="col-md-6 col-lg-4 project-item" data-category="html-css">
-            <article class="project-card h-100">
-              <div class="project-img project-img-4">
-                <img
-                  src="../img/projects/blog-personal.svg"
-                  alt="Captura de pantalla del proyecto Blog personal con HTML y CSS"
-                  class="project-thumb-img"
-                  width="400"
-                  height="220"
-                  loading="lazy"
-                />
-              </div>
-              <div class="project-body">
-                <h3 class="h5 fw-bold mb-1">Blog Personal</h3>
-                <p class="project-category small mb-3">HTML &amp; CSS</p>
-                <p class="text-muted mb-3">
-                  Blog con diseño editorial, tipografía cuidada, jerarquía visual y navegación
-                  entre artículos con rutas relativas.
-                </p>
-                <ul class="list-unstyled d-flex gap-2 flex-wrap mb-4" aria-label="Tecnologías usadas">
-                  <li><span class="tech-badge">HTML5</span></li>
-                  <li><span class="tech-badge">CSS3</span></li>
-                </ul>
-                <div class="d-flex gap-2">
-                  <button type="button" class="btn btn-sm btn-outline-secondary disabled" disabled aria-label="Código de Blog Personal no disponible" title="Código disponible próximamente">
-                    <i class="bi bi-github me-1" aria-hidden="true"></i>Código
-                  </button>
-                  <button type="button" class="btn btn-sm btn-accent disabled" disabled aria-label="Demo de Blog Personal no disponible" title="Demo disponible próximamente">
-                    <i class="bi bi-box-arrow-up-right me-1" aria-hidden="true"></i>Demo
-                  </button>
-                </div>
-              </div>
-            </article>
-          </div>
+          <a class="stack-card project-item" role="listitem" data-category="html-css" href="proyecto-blog-personal.html" style="--card-img: url('../img/projects/blog-personal.svg')" aria-label="Ver proyecto Blog Personal">
+            <div class="stack-card__content">
+              <span class="stack-card__num">04</span>
+              <h3 class="stack-card__title">Blog Personal</h3>
+              <p class="stack-card__desc">Blog con diseño editorial, tipografía cuidada, jerarquía visual y navegación entre artículos con rutas relativas.</p>
+              <ul class="stack-card__tech list-unstyled">
+                <li><span class="glass-chip">HTML5</span></li>
+                <li><span class="glass-chip">CSS3</span></li>
+              </ul>
+              <span class="stack-card__cta">Ver proyecto <i class="bi bi-arrow-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
 
           <!-- ── Proyecto 5 ── -->
-          <div class="col-md-6 col-lg-4 project-item" data-category="bootstrap">
-            <article class="project-card h-100">
-              <div class="project-img project-img-5">
-                <img
-                  src="../img/projects/ecommerce-ui.svg"
-                  alt="Captura de pantalla del proyecto E-commerce con Bootstrap"
-                  class="project-thumb-img"
-                  width="400"
-                  height="220"
-                  loading="lazy"
-                />
-              </div>
-              <div class="project-body">
-                <h3 class="h5 fw-bold mb-1">E-commerce UI</h3>
-                <p class="project-category small mb-3">Bootstrap</p>
-                <p class="text-muted mb-3">
-                  Interfaz de tienda online con catálogo de productos, carrito y checkout,
-                  desarrollada con componentes de Bootstrap.
-                </p>
-                <ul class="list-unstyled d-flex gap-2 flex-wrap mb-4" aria-label="Tecnologías usadas">
-                  <li><span class="tech-badge">Bootstrap 5</span></li>
-                  <li><span class="tech-badge">CSS3</span></li>
-                </ul>
-                <div class="d-flex gap-2">
-                  <button type="button" class="btn btn-sm btn-outline-secondary disabled" disabled aria-label="Código de E-commerce UI no disponible" title="Código disponible próximamente">
-                    <i class="bi bi-github me-1" aria-hidden="true"></i>Código
-                  </button>
-                  <button type="button" class="btn btn-sm btn-accent disabled" disabled aria-label="Demo de E-commerce UI no disponible" title="Demo disponible próximamente">
-                    <i class="bi bi-box-arrow-up-right me-1" aria-hidden="true"></i>Demo
-                  </button>
-                </div>
-              </div>
-            </article>
-          </div>
+          <a class="stack-card project-item" role="listitem" data-category="bootstrap" href="proyecto-ecommerce-ui.html" style="--card-img: url('../img/projects/ecommerce-ui.svg')" aria-label="Ver proyecto E-commerce UI">
+            <div class="stack-card__content">
+              <span class="stack-card__num">05</span>
+              <h3 class="stack-card__title">E-commerce UI</h3>
+              <p class="stack-card__desc">Interfaz de tienda online con catálogo de productos, carrito y checkout, con componentes de Bootstrap.</p>
+              <ul class="stack-card__tech list-unstyled">
+                <li><span class="glass-chip">Bootstrap 5</span></li>
+                <li><span class="glass-chip">CSS3</span></li>
+              </ul>
+              <span class="stack-card__cta">Ver proyecto <i class="bi bi-arrow-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
 
           <!-- ── Proyecto 6 (este portfolio) ── -->
-          <div class="col-md-6 col-lg-4 project-item" data-category="html-css bootstrap">
-            <article class="project-card h-100 project-card--featured">
-              <div class="project-img project-img-6">
-                <img
-                  src="../img/projects/portfolio.svg"
-                  alt="Captura de pantalla de este portfolio personal - proyecto principal de Coderhouse"
-                  class="project-thumb-img"
-                  width="400"
-                  height="220"
-                  loading="lazy"
-                />
-              </div>
-              <div class="project-body">
-                <div class="d-flex align-items-center gap-2 mb-1">
-                  <h3 class="h5 fw-bold mb-0">Este Portfolio</h3>
-                  <span class="badge bg-accent text-white">Destacado</span>
-                </div>
-                <p class="project-category small mb-3">HTML · CSS · Bootstrap</p>
-                <p class="text-muted mb-3">
-                  Portfolio personal completo desarrollado como proyecto final de Coderhouse.
-                  Diseño responsive con tema oscuro y múltiples páginas.
-                </p>
-                <ul class="list-unstyled d-flex gap-2 flex-wrap mb-4" aria-label="Tecnologías usadas">
-                  <li><span class="tech-badge">HTML5</span></li>
-                  <li><span class="tech-badge">Bootstrap 5</span></li>
-                  <li><span class="tech-badge">CSS3</span></li>
-                  <li><span class="tech-badge">JS</span></li>
-                </ul>
-                <div class="d-flex gap-2">
-                  <a href="https://github.com/alessvon/coderhouse-proyecto" class="btn btn-sm btn-outline-secondary" target="_blank" rel="noopener">
-                    <i class="bi bi-github me-1" aria-hidden="true"></i>Código
-                  </a>
-                  <a href="../index.html" class="btn btn-sm btn-accent">
-                    <i class="bi bi-eye me-1" aria-hidden="true"></i>Ver
-                  </a>
-                </div>
-              </div>
-            </article>
-          </div>
+          <a class="stack-card project-item" role="listitem" data-category="html-css bootstrap" href="../index.html" style="--card-img: url('../img/projects/portfolio.svg')" aria-label="Ver este portfolio">
+            <div class="stack-card__content">
+              <span class="stack-card__num">06 · Destacado</span>
+              <h3 class="stack-card__title">Este Portfolio</h3>
+              <p class="stack-card__desc">Portfolio personal completo, proyecto final de Coderhouse. Diseño responsive con tema oscuro y múltiples páginas.</p>
+              <ul class="stack-card__tech list-unstyled">
+                <li><span class="glass-chip">HTML5</span></li>
+                <li><span class="glass-chip">Bootstrap 5</span></li>
+                <li><span class="glass-chip">CSS3</span></li>
+                <li><span class="glass-chip">JS</span></li>
+              </ul>
+              <span class="stack-card__cta">Ver sitio <i class="bi bi-arrow-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
 
         </div>
-        <!-- /projects-grid -->
+        <!-- /carrusel -->
 
       </div>
     </section>
@@ -368,8 +235,7 @@
   <footer class="footer-dark py-4 text-center" role="contentinfo">
     <div class="container">
       <nav class="footer-nav mb-3" aria-label="Links del footer">
-        <a href="../index.html#sobre-mi">Sobre mí</a>
-        <a href="../index.html#habilidades">Habilidades</a>
+        <a href="sobre-mi.html">Sobre mí</a>
         <a href="proyectos.html">Proyectos</a>
         <a href="../index.html#contacto">Contacto</a>
       </nav>
@@ -386,7 +252,7 @@
   <!-- Bootstrap Bundle JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <!-- Script principal -->
-  <script src="../js/main.js?v=20260808"></script>
+  <script src="../js/main.js?v=20260809"></script>
 
 </body>
 </html>
