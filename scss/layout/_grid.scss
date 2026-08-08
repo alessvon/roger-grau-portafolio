@@ -5,15 +5,13 @@
 //   GRID / SECCIONES / UTILIDADES DE COLOR
 // ============================================================
 
-// --- Secciones alternadas ---
+// --- Secciones ---
+// Fondos transparentes: dejan ver la malla global (#particles-bg)
+// sobre el fondo oscuro del body, unificando la home en oscuro.
 
-.section-light {
-  background-color: vars.$color-bg-light;
-  color: #1a1a1a;
-}
-
+.section-light,
 .section-dark {
-  background-color: vars.$color-bg-dark-2;
+  background-color: transparent;
   color: vars.$color-text-light;
 
   // Bootstrap .text-muted usa #6c757d — insuficiente sobre negro
@@ -40,11 +38,6 @@
     pointer-events: none;
     user-select: none;
   }
-}
-
-// En secciones claras el amarillo desaparece → usar negro
-.section-light .section-heading::before {
-  color: rgba(vars.$color-bg-dark, 0.07);
 }
 
 // --- Clases de texto utilitarias — generadas con @each ---

@@ -13,11 +13,6 @@
   border: none;
   padding: 0;
   @include mx.mono-label(0.72rem, 3px);
-
-  // En secciones claras el amarillo no tiene contraste → usar negro
-  .section-light & {
-    color: vars.$color-accent-on-light;
-  }
 }
 
 // Ícono decorativo neutro sobre fondo claro

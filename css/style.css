@@ -170,9 +170,6 @@ p {
   letter-spacing: 3px;
   text-transform: uppercase;
 }
-.section-light .badge-section {
-  color: #0C0C0C;
-}
 
 .icon-muted {
   color: #888880;
@@ -406,7 +403,7 @@ p {
 }
 
 .footer-dark {
-  background-color: #0C0C0C;
+  background-color: transparent;
   border-top: 1px solid rgba(232, 255, 0, 0.1);
 }
 .footer-dark .text-muted {
@@ -441,15 +438,12 @@ p {
   letter-spacing: 2px;
 }
 
-.section-light {
-  background-color: #F0EDE6;
-  color: #1a1a1a;
-}
-
+.section-light,
 .section-dark {
-  background-color: #141414;
+  background-color: transparent;
   color: #E8E6E0;
 }
+.section-light .text-muted,
 .section-dark .text-muted {
   color: #a8a49c !important;
 }
@@ -469,10 +463,6 @@ p {
   line-height: 1;
   pointer-events: none;
   user-select: none;
-}
-
-.section-light .section-heading::before {
-  color: rgba(12, 12, 12, 0.07);
 }
 
 .text-accent {
@@ -586,18 +576,27 @@ p {
     border: 1px solid #ccc;
   }
 }
-#hero {
-  background: #0C0C0C;
-  position: relative;
-}
-#hero::before {
-  content: "";
-  position: absolute;
+#particles-bg {
+  position: fixed;
   inset: 0;
-  background-image: radial-gradient(rgba(232, 255, 0, 0.12) 1px, transparent 1px);
-  background-size: 28px 28px;
+  z-index: -1;
   pointer-events: none;
-  z-index: 0;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  width: 2.5px;
+  height: 2.5px;
+  border-radius: 50%;
+  background: rgba(232, 255, 0, 0.22);
+  transform: translate(-50%, -50%) scale(1);
+  will-change: transform, background-color;
+  transition: transform 0.3s cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+
+#hero {
+  position: relative;
 }
 #hero .container {
   position: relative;
@@ -662,7 +661,7 @@ p {
   gap: 0.5rem;
   margin-bottom: 0.6rem;
   font-size: 0.88rem;
-  color: #3a3a2a;
+  color: rgba(232, 230, 224, 0.7);
   font-family: "IBM Plex Mono", monospace;
 }
 
