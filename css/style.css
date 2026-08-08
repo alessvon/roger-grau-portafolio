@@ -702,22 +702,12 @@ p {
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  overflow: hidden;
-}
-
-.particle {
-  position: absolute;
-  width: 2.5px;
-  height: 2.5px;
-  border-radius: 50%;
-  background: rgba(232, 255, 0, 0.22);
-  transform: translate(-50%, -50%) scale(1);
-  will-change: transform, background-color;
-  transition: transform 0.3s cubic-bezier(0.2, 0.7, 0.3, 1);
+  display: block;
 }
 
 #hero {
   position: relative;
+  padding-top: clamp(8rem, 52vh, 36rem);
 }
 #hero .container {
   position: relative;

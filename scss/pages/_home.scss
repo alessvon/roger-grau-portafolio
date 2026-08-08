@@ -6,31 +6,18 @@
 //   PÁGINA DE INICIO — index.html
 // ============================================================
 
-// ── MALLA DE PARTÍCULAS GLOBAL ────────────────────────────────
-// Lienzo fijo que cubre el viewport, detrás de todo el contenido
-// (sobre el fondo oscuro del body). Las secciones son transparentes,
-// así que la malla se percibe como una única tela continua.
+// ── MALLA DE PARTÍCULAS GLOBAL (canvas) ───────────────────────
+// Un único <canvas> fijo al viewport. El dibujo se hace en JS en
+// coordenadas de documento con offset de scroll, así la malla se
+// percibe como una tela continua que se desplaza con el contenido.
+// Las secciones son transparentes para dejarla ver.
 
 #particles-bg {
   position: fixed;
   inset: 0;
   z-index: -1;        // detrás del contenido, sobre el fondo del body
   pointer-events: none;
-  overflow: hidden;
-}
-
-// Cada punto de la malla (estado base = "tela" tenue).
-// El color/glow bajo el cursor lo aplica JS inline (gradiente neón);
-// aquí solo definimos el reposo y el retorno suave de la elevación.
-.particle {
-  position: absolute;
-  width: 2.5px;
-  height: 2.5px;
-  border-radius: 50%; // siempre redondos
-  background: rgba(vars.$color-accent, 0.22);
-  transform: translate(-50%, -50%) scale(1);
-  will-change: transform, background-color;
-  transition: transform 0.3s cubic-bezier(0.2, 0.7, 0.3, 1);
+  display: block;
 }
 
 // ── HERO ──────────────────────────────────────────────────────
@@ -38,6 +25,8 @@
 #hero {
   position: relative;
   // El fondo lo aporta la malla global (#particles-bg) sobre el body.
+  // Bajamos el contenido para dar mucho aire a la animación de la mano encima.
+  padding-top: clamp(8rem, 52vh, 36rem);
 
   .container {
     position: relative;
