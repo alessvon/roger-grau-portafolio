@@ -97,3 +97,151 @@ $project-gradients: (
   font-weight: 400;
   letter-spacing: 0.3px;
 }
+
+// ============================================================
+//   STACKING CARDS — Proyectos destacados (home)
+//   Se apilan al hacer scroll (position: sticky), flotan sobre
+//   la malla y usan una imagen de fondo enfocada a la derecha.
+// ============================================================
+
+.stack {
+  padding-bottom: 8vh; // recorrido extra para que la última card ancle
+}
+
+.stack-card {
+  position: sticky;
+  top: 96px; // navbar (80px) + aire
+  min-height: clamp(360px, 58vh, 480px);
+  display: flex;
+  align-items: center;
+  border-radius: 20px;
+  overflow: hidden;
+  isolation: isolate;
+
+  // Imagen de fondo, enfocada hacia la derecha
+  background-image: var(--card-img);
+  background-size: cover;
+  background-position: right center;
+  background-repeat: no-repeat;
+
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+
+  // La card es un enlace a la página del proyecto
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  @include mx.transition(border-color, box-shadow, transform);
+
+  &:hover,
+  &:focus-visible {
+    text-decoration: none; // sin subrayado de enlace en ningún estado
+    border-color: rgba(vars.$color-accent, 0.5);
+    box-shadow: 0 28px 72px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(vars.$color-accent, 0.35);
+  }
+
+  &:focus-visible {
+    outline: 2px solid vars.$color-accent;
+    outline-offset: 3px;
+  }
+
+  // Espaciado entre cards (crea el recorrido de scroll antes de apilar)
+  & + & {
+    margin-top: 7vh;
+  }
+
+  // Anclaje escalonado: cada card se pega un poco más abajo → efecto "peek"
+  &:nth-child(2) { top: 112px; }
+  &:nth-child(3) { top: 128px; }
+
+  // Degradado para legibilidad: oscuro a la izquierda → transparente a la derecha
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: linear-gradient(
+      100deg,
+      rgba(vars.$color-bg-dark, 0.95) 0%,
+      rgba(vars.$color-bg-dark, 0.82) 38%,
+      rgba(vars.$color-bg-dark, 0.35) 68%,
+      rgba(vars.$color-bg-dark, 0.05) 100%
+    );
+  }
+}
+
+.stack-card__content {
+  position: relative;
+  z-index: 1;
+  width: 90%;
+  max-width: 560px;
+  padding: clamp(1.5rem, 4vw, 3rem);
+}
+
+.stack-card__num {
+  font-family: vars.$font-body;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 3px;
+  color: vars.$color-accent;
+}
+
+.stack-card__title {
+  font-family: vars.$font-display;
+  font-weight: 800;
+  font-size: clamp(1.9rem, 4vw, 3rem);
+  line-height: 1.02;
+  color: vars.$color-text-light;
+  margin: 0.4rem 0 0.75rem;
+}
+
+.stack-card__desc {
+  color: rgba(vars.$color-text-light, 0.8);
+  font-size: 0.95rem;
+  max-width: 42ch;
+  margin-bottom: 1.25rem;
+}
+
+.stack-card__tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+// Llamada a la acción ("Ver proyecto →")
+.stack-card__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: vars.$font-body;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: vars.$color-accent;
+
+  i {
+    @include mx.transition(transform);
+  }
+
+  .stack-card:hover &,
+  .stack-card:focus-visible & {
+    i { transform: translateX(5px); }
+  }
+}
+
+// Chip translúcido tipo glass (tecnologías)
+.glass-chip {
+  display: inline-block;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  font-family: vars.$font-body;
+  font-size: 0.72rem;
+  letter-spacing: 0.5px;
+  color: vars.$color-text-light;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
