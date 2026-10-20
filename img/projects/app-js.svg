@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 220" role="img" aria-labelledby="title">
-  <title id="title">Vista previa App JavaScript</title>
-  <rect width="400" height="220" fill="#10b981"/>
-  <rect x="22" y="24" width="356" height="34" fill="#111111" opacity="0.55"/>
-  <rect x="22" y="72" width="170" height="120" fill="#ffffff" opacity="0.22"/>
-  <rect x="206" y="72" width="172" height="120" fill="#ffffff" opacity="0.42"/>
-  <text x="22" y="205" fill="#ffffff" font-family="Arial, sans-serif" font-size="20">App JS</text>
-</svg>

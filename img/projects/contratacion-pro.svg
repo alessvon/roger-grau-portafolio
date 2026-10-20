@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 220" role="img" aria-labelledby="title">
+  <title id="title">Vista previa Contratacion.pro — ATS con agentes de IA</title>
+  <rect width="400" height="220" fill="#6d28d9"/>
+  <rect x="22" y="24" width="356" height="26" fill="#111111" opacity="0.5"/>
+  <!-- columnas estilo tablero Kanban -->
+  <rect x="22" y="64" width="108" height="128" rx="6" fill="#ffffff" opacity="0.18"/>
+  <rect x="146" y="64" width="108" height="128" rx="6" fill="#ffffff" opacity="0.30"/>
+  <rect x="270" y="64" width="108" height="128" rx="6" fill="#ffffff" opacity="0.18"/>
+  <!-- tarjetas -->
+  <rect x="32" y="76" width="88" height="22" rx="4" fill="#ffffff" opacity="0.65"/>
+  <rect x="156" y="76" width="88" height="22" rx="4" fill="#ffffff" opacity="0.8"/>
+  <rect x="156" y="106" width="88" height="22" rx="4" fill="#ffffff" opacity="0.8"/>
+  <rect x="280" y="76" width="88" height="22" rx="4" fill="#ffffff" opacity="0.65"/>
+  <!-- chip de match -->
+  <circle cx="168" cy="150" r="8" fill="#E8FF00"/>
+  <text x="22" y="214" fill="#ffffff" font-family="Arial, sans-serif" font-size="18" font-weight="bold">Contratacion.pro</text>
+</svg>

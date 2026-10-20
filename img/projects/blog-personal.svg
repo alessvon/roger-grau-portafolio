@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 220" role="img" aria-labelledby="title">
-  <title id="title">Vista previa Blog Personal</title>
-  <rect width="400" height="220" fill="#f59e0b"/>
-  <rect x="26" y="24" width="348" height="24" fill="#ffffff" opacity="0.8"/>
-  <rect x="26" y="62" width="348" height="12" fill="#ffffff" opacity="0.5"/>
-  <rect x="26" y="84" width="348" height="12" fill="#ffffff" opacity="0.4"/>
-  <rect x="26" y="106" width="348" height="12" fill="#ffffff" opacity="0.3"/>
-  <text x="26" y="198" fill="#ffffff" font-family="Arial, sans-serif" font-size="20">Blog Personal</text>
-</svg>

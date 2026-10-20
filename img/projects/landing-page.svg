@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 220" role="img" aria-labelledby="title">
-  <title id="title">Vista previa Landing Page</title>
-  <rect width="400" height="220" fill="#6c63ff"/>
-  <rect x="24" y="28" width="352" height="28" fill="#ffffff" opacity="0.9"/>
-  <rect x="24" y="72" width="210" height="90" fill="#ffffff" opacity="0.2"/>
-  <rect x="248" y="72" width="128" height="90" fill="#ffffff" opacity="0.35"/>
-  <text x="24" y="198" fill="#ffffff" font-family="Arial, sans-serif" font-size="20">Landing Page</text>
-</svg>

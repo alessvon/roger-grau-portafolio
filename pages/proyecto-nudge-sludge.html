@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Nudge o Sludge — juego de cartas para aprender cuándo y cómo aplicar economía del comportamiento. La misma palanca puede ser acierto o trampa según el contexto. Caso de estudio de Roger Grau." />
+  <meta name="author" content="Roger Grau" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#0C0C0C" />
+  <title>Nudge o Sludge — juego de economía del comportamiento | Roger Grau</title>
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230C0C0C'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='monospace' font-size='20' fill='%23E8FF00'>R</text></svg>" type="image/svg+xml" />
+
+  <link rel="canonical" href="https://alessvon.github.io/coderhouse-proyecto/pages/proyecto-nudge-sludge.html" />
+
+  <meta property="og:type"        content="article" />
+  <meta property="og:url"         content="https://alessvon.github.io/coderhouse-proyecto/pages/proyecto-nudge-sludge.html" />
+  <meta property="og:title"       content="Nudge o Sludge — aprende economía del comportamiento jugando" />
+  <meta property="og:description" content="Un juego de cartas donde la misma decisión puede ser acierto o trampa según el contexto." />
+  <meta property="og:image"       content="https://alessvon.github.io/coderhouse-proyecto/img/projects/nudge-sludge.svg" />
+  <meta property="og:locale"      content="es_MX" />
+
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content="Nudge o Sludge — juego de economía del comportamiento" />
+  <meta name="twitter:description" content="La misma palanca conductual puede ser acierto o trampa según el contexto." />
+  <meta name="twitter:image"       content="https://alessvon.github.io/coderhouse-proyecto/img/projects/nudge-sludge.svg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=IBM+Plex+Mono:wght@400;500&family=Libre+Baskerville&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css?v=20260810" />
+
+  <style>
+    .cs-lead { max-width: 820px; }
+    .cs-meta { display: flex; flex-wrap: wrap; gap: 1.5rem 2.5rem; }
+    .cs-meta dt { color: #E8FF00; font-family: "IBM Plex Mono", monospace; font-size: .68rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: .2rem; }
+    .cs-meta dd { margin: 0; color: #E8E6E0; font-size: .95rem; }
+    .cs-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+    .cs-stat { border: 1px solid rgba(232,255,0,.18); border-radius: 14px; padding: 1.5rem 1.25rem; background: rgba(232,255,0,.03); }
+    .cs-stat__num { font-family: "Syne", sans-serif; font-weight: 800; font-size: clamp(1.8rem, 4vw, 2.6rem); color: #E8FF00; line-height: 1; }
+    .cs-stat__label { color: #a8a49c; font-size: .82rem; margin-top: .5rem; }
+    .cs-callout { border-left: 3px solid #E8FF00; background: rgba(232,255,0,.04); border-radius: 0 12px 12px 0; padding: 1.25rem 1.5rem; }
+    .cs-callout h3 { color: #E8FF00; font-size: 1rem; letter-spacing: .5px; }
+    .cs-table { width: 100%; border-collapse: collapse; font-size: .92rem; }
+    .cs-table th, .cs-table td { text-align: left; padding: .8rem 1rem; border-bottom: 1px solid rgba(232,230,224,.1); vertical-align: top; }
+    .cs-table thead th { color: #E8FF00; font-family: "IBM Plex Mono", monospace; font-size: .72rem; letter-spacing: 1px; text-transform: uppercase; }
+    .cs-table tbody tr:hover { background: rgba(232,255,0,.03); }
+    .cs-table strong { color: #E8E6E0; }
+    .cs-table-wrap { overflow-x: auto; border: 1px solid rgba(232,230,224,.1); border-radius: 14px; }
+    .cs-card { border: 1px solid rgba(232,230,224,.12); border-radius: 14px; padding: 1.5rem; height: 100%; background: rgba(255,255,255,.015); }
+    .cs-card__kicker { color: #E8FF00; font-family: "IBM Plex Mono", monospace; font-size: .7rem; letter-spacing: 2px; }
+    .cs-card h3 { font-size: 1.1rem; margin: .4rem 0 .6rem; }
+    .cs-card p { color: #a8a49c; font-size: .92rem; margin: 0; }
+    .cs-dl dt { font-family: "IBM Plex Mono", monospace; font-size: .68rem; letter-spacing: 1px; text-transform: uppercase; color: #E8FF00; margin-top: .6rem; }
+    .cs-dl dd { margin: 0 0 .2rem; color: #c9c6be; font-size: .92rem; }
+    .cs-steps { counter-reset: step; list-style: none; padding: 0; margin: 0; }
+    .cs-steps li { position: relative; padding: 1.1rem 1.25rem 1.1rem 3.75rem; border: 1px solid rgba(232,230,224,.12); border-radius: 12px; margin-bottom: .75rem; background: rgba(255,255,255,.015); }
+    .cs-steps li::before { counter-increment: step; content: counter(step); position: absolute; left: 1.1rem; top: 1rem; width: 1.9rem; height: 1.9rem; border-radius: 50%; background: #E8FF00; color: #0C0C0C; font-family: "Syne", sans-serif; font-weight: 800; display: flex; align-items: center; justify-content: center; }
+    .cs-dot { display: inline-block; width: .7rem; height: .7rem; border-radius: 50%; margin-right: .4rem; vertical-align: middle; }
+    .cs-timeline { list-style: none; padding: 0; margin: 0; border-left: 2px solid rgba(232,255,0,.25); }
+    .cs-timeline li { position: relative; padding: 0 0 1.5rem 1.75rem; }
+    .cs-timeline li::before { content: ""; position: absolute; left: -7px; top: .35rem; width: 12px; height: 12px; border-radius: 50%; background: #E8FF00; }
+    .cs-timeline .cs-date { color: #E8FF00; font-family: "IBM Plex Mono", monospace; font-size: .75rem; letter-spacing: 1px; }
+    @media (max-width: 767.98px) { .cs-stats { grid-template-columns: repeat(2, 1fr); } }
+  </style>
+</head>
+
+<body>
+
+  <canvas id="particles-bg" aria-hidden="true"></canvas>
+
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="navbar" aria-label="Navegación principal">
+      <div class="container">
+        <a class="navbar-brand" href="../index.html">PRODUCT ENGINEER</a>
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Abrir menú">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navMenu">
+          <ul class="navbar-nav ms-auto gap-2">
+            <li class="nav-item"><a class="nav-link" href="sobre-mi.html"><span class="nav-num">01</span> Sobre mí</a></li>
+            <li class="nav-item"><a class="nav-link active" href="proyectos.html" aria-current="page"><span class="nav-num">02</span> Proyectos</a></li>
+            <li class="nav-item"><a class="nav-link" href="../index.html#contacto"><span class="nav-num">03</span> Contacto</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ── HERO ── -->
+    <section class="page-hero d-flex align-items-center" aria-label="Encabezado del proyecto">
+      <div class="container text-white">
+        <a href="proyectos.html" class="btn btn-outline-light btn-sm px-3 mb-4">
+          <i class="bi bi-arrow-left me-2" aria-hidden="true"></i>Proyectos
+        </a>
+        <span class="badge-section mb-3 d-inline-block">Caso de estudio · Juego educativo full-stack</span>
+        <h1 class="display-4 fw-bold mb-3">Nudge o Sludge</h1>
+        <p class="lead text-muted-light cs-lead mb-0">
+          Un juego de cartas para aprender <strong class="text-white">cuándo y cómo</strong> aplicar economía del
+          comportamiento. Convertí un marco teórico difuso en un sistema de reglas jugable donde la misma decisión
+          puede ser acierto o trampa según el contexto.
+        </p>
+      </div>
+    </section>
+
+    <!-- ── FICHA ── -->
+    <section class="py-4 section-dark border-top border-bottom border-secondary" aria-label="Ficha del proyecto">
+      <div class="container">
+        <dl class="cs-meta mb-4">
+          <div><dt>Rol</dt><dd>Product Engineer — producto, motor de reglas y full-stack</dd></div>
+          <div><dt>Tipo</dt><dd>Producto web · juego educativo · proyecto personal</dd></div>
+          <div><dt>Periodo</dt><dd>9–25 sept 2026</dd></div>
+          <div><dt>Estado</dt><dd>MVP jugable · modo solitario</dd></div>
+        </dl>
+        <div class="d-flex flex-wrap align-items-center gap-3">
+          <ul class="stack-card__tech list-unstyled d-flex flex-wrap gap-2 mb-0">
+            <li><span class="glass-chip">Next.js 16</span></li>
+            <li><span class="glass-chip">React 19</span></li>
+            <li><span class="glass-chip">TypeScript</span></li>
+            <li><span class="glass-chip">Tailwind 4</span></li>
+            <li><span class="glass-chip">Supabase</span></li>
+            <li><span class="glass-chip">Vitest</span></li>
+          </ul>
+          <a href="https://github.com/alessvon/juego_cartas_ciencias_comportamiento" class="btn btn-outline-light btn-sm px-3" target="_blank" rel="noopener">
+            <i class="bi bi-github me-2" aria-hidden="true"></i>Ver repositorio
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── KPIs ── -->
+    <section class="py-5 section-light" aria-label="Alcance de contenido">
+      <div class="container">
+        <div class="cs-stats">
+          <div class="cs-stat"><div class="cs-stat__num">15</div><div class="cs-stat__label">palancas conductuales en 4 familias</div></div>
+          <div class="cs-stat"><div class="cs-stat__num">10</div><div class="cs-stat__label">casos de producto y política pública</div></div>
+          <div class="cs-stat"><div class="cs-stat__num">4</div><div class="cs-stat__label">contextos que reencuadran la mano</div></div>
+          <div class="cs-stat"><div class="cs-stat__num">30</div><div class="cs-stat__label">tests automatizados del motor de reglas</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── RESUMEN ── -->
+    <section class="py-5 section-dark" aria-labelledby="t-resumen">
+      <div class="container">
+        <h2 id="t-resumen" class="display-6 fw-bold mb-4 section-heading" data-num="01">Resumen</h2>
+        <div class="row g-4">
+          <div class="col-md-4"><div class="cs-card"><span class="cs-card__kicker">Problema</span><p class="mt-3">La economía del comportamiento se enseña como una lista de sesgos para memorizar. Se sabe <em>qué</em> son, pero no <em>cuándo</em> usarlos: la misma palanca es buena intervención en un caso y manipulación en otro.</p></div></div>
+          <div class="col-md-4"><div class="cs-card"><span class="cs-card__kicker">Solución</span><p class="mt-3">Un juego de siete rondas; cada ronda es un caso real (carrito abandonado, adherencia a medicación…). Recibes cinco palancas, comprometes una y el juego revela qué tan bien leíste el contexto.</p></div></div>
+          <div class="col-md-4"><div class="cs-card"><span class="cs-card__kicker">Qué demuestra</span><p class="mt-3">Convertir un marco teórico difuso en un sistema de reglas explícito, testeable y jugable; y diseñar la experiencia alrededor de una idea pedagógica: <strong class="text-white">el contexto manda.</strong></p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── EL PROBLEMA ── -->
+    <section class="py-5 section-light" aria-labelledby="t-problema">
+      <div class="container">
+        <h2 id="t-problema" class="display-6 fw-bold mb-4 section-heading" data-num="02">El problema</h2>
+        <p class="fs-5 text-muted cs-lead mb-4">
+          Los equipos de producto, marketing y políticas públicas usan "nudges" para mejorar decisiones. Pero la misma
+          técnica que ayuda en un contexto <strong class="text-white">daña en otro</strong>: la urgencia fabricada es
+          una trampa en banca o con usuarios en crisis, y una herramienta legítima en una marca de lujo. El material
+          educativo enseña <strong class="text-white">definiciones</strong>; lo que falta es
+          <strong class="text-white">criterio de aplicación</strong>.
+        </p>
+        <div class="cs-table-wrap mb-4">
+          <table class="cs-table">
+            <thead><tr><th>Enfoque habitual</th><th>Limitación</th><th>Lo que propone este proyecto</th></tr></thead>
+            <tbody>
+              <tr><td>Lista de sesgos con definiciones</td><td>Se memoriza, no se aplica</td><td>Casos donde hay que elegir</td></tr>
+              <tr><td>Estudios de caso leídos</td><td>Respuesta pasiva, sin consecuencia</td><td>Decisión comprometida con puntaje</td></tr>
+              <tr><td>"Esta técnica funciona"</td><td>Ignora el contexto</td><td>El contexto reencuadra cada palanca</td></tr>
+              <tr><td>Solo lo que funciona</td><td>No enseña el límite ético</td><td>Las trampas restan puntos</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="cs-callout">
+          <h3 class="mb-2">Hipótesis de producto</h3>
+          <p class="text-muted mb-0">
+            Si el aprendizaje exige comprometer una decisión sin poder ver la respuesta, y luego muestra <em>por qué</em>
+            esa carta puntúa distinto según el contexto, el jugador internaliza el criterio en lugar de memorizar la lista.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── LA SOLUCIÓN ── -->
+    <section class="py-5 section-dark" aria-labelledby="t-solucion">
+      <div class="container">
+        <h2 id="t-solucion" class="display-6 fw-bold mb-4 section-heading" data-num="03">La solución</h2>
+
+        <h3 class="h5 fw-semibold mb-3">Cómo se juega</h3>
+        <ol class="cs-steps mb-5">
+          <li><strong class="text-white">Recibes un caso.</strong> <span class="text-muted">Un problema de producto con su contexto (p. ej. "llenan el carrito y se van en el pago").</span></li>
+          <li><strong class="text-white">Ves cinco palancas.</strong> <span class="text-muted">Cartas de una baraja de 15 conductas (anclaje, default, prueba social…).</span></li>
+          <li><strong class="text-white">Eliges una y la confirmas.</strong> <span class="text-muted">Un toque elige (puedes cambiar); un segundo toque confirma. Ya no hay vuelta atrás.</span></li>
+          <li><strong class="text-white">Se revela la clave.</strong> <span class="text-muted">Cada carta se clasifica (Fuerte / Situacional / Débil / Trampa) con la razón de <em>ese</em> caso. Siete rondas, puntaje final.</span></li>
+        </ol>
+
+        <div class="row g-4">
+          <div class="col-lg-6">
+            <h3 class="h5 fw-semibold mb-3">Sistema de puntuación</h3>
+            <div class="cs-table-wrap">
+              <table class="cs-table">
+                <thead><tr><th>Categoría</th><th>Puntos</th><th>Significado</th></tr></thead>
+                <tbody>
+                  <tr><td><span class="cs-dot" style="background:#22c55e"></span>Fuerte</td><td>+3</td><td>Ataca la causa real del problema</td></tr>
+                  <tr><td><span class="cs-dot" style="background:#14b8a6"></span>Situacional</td><td>+2</td><td>Funciona si se cumple una condición</td></tr>
+                  <tr><td><span class="cs-dot" style="background:#eab308"></span>Débil</td><td>+1</td><td>No daña, pero no mueve la aguja</td></tr>
+                  <tr><td><span class="cs-dot" style="background:#ef4444"></span>Trampa</td><td>−2</td><td>Tentadora pero perjudicial en este caso</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="text-muted small mt-3 mb-0">Rango de una partida: de −14 (siete trampas) a +21 (siete aciertos fuertes). El veredicto final es cualitativo, no solo numérico.</p>
+          </div>
+          <div class="col-lg-6">
+            <h3 class="h5 fw-semibold mb-3">La idea central: el contexto manda</h3>
+            <p class="text-muted">Tres de las siete rondas traen una carta de contexto que puede subir una palanca un nivel, bajarla, o <strong class="text-white">convertirla en trampa</strong> sin importar qué tan buena fuera antes.</p>
+            <div class="cs-table-wrap">
+              <table class="cs-table">
+                <thead><tr><th>Contexto</th><th>Efecto principal</th></tr></thead>
+                <tbody>
+                  <tr><td>Usuario vulnerable / en crisis</td><td>Escasez, señuelo y recompensa inmediata pasan a trampa</td></tr>
+                  <tr><td>Sector regulado (banca / salud)</td><td>La urgencia fabricada pasa a trampa; autoridad sube</td></tr>
+                  <tr><td>Marca premium / lujo</td><td>Escasez, autoridad y anclaje suben; prueba social baja</td></tr>
+                  <tr><td>B2B / decisión en comité</td><td>La escasez pasa a trampa; prueba social y encuadre suben</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="cs-callout mt-5">
+          <h3 class="mb-2">Contenido pedagógico con rigor</h3>
+          <p class="text-muted mb-0">
+            Cada palanca incluye definición, mecanismo, ejemplo y una <strong class="text-white">línea roja</strong>
+            (dónde deja de ser nudge y pasa a ser manipulación). Algunos casos enlazan a la investigación original
+            (<em>Save More Tomorrow</em>, Thaler &amp; Benartzi 2004; <em>Do Defaults Save Lives?</em>, Johnson &amp;
+            Goldstein 2003) con un resumen que no revela la respuesta.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── DECISIONES ── -->
+    <section class="py-5 section-light" aria-labelledby="t-decisiones">
+      <div class="container">
+        <h2 id="t-decisiones" class="display-6 fw-bold mb-4 section-heading" data-num="04">Decisiones de producto</h2>
+        <div class="row g-3">
+          <div class="col-md-6"><div class="cs-card"><h3>1. Una sola decisión por ronda, sin vuelta atrás</h3><p>Forzar la elección obliga a priorizar, que es la habilidad a entrenar. Se evita la frustración dejando cambiar de carta libremente hasta confirmar.</p></div></div>
+          <div class="col-md-6"><div class="cs-card"><h3>2. Confirmación en dos toques</h3><p>En móvil, un solo toque causa errores irreversibles. El gesto se movió a la propia carta para reducir distancia y ruido visual.</p></div></div>
+          <div class="col-md-6"><div class="cs-card"><h3>3. Mano fija por caso, orden aleatorio</h3><p>Una mano aleatoria no garantiza una respuesta defendible. Fijarla permite escribir la razón de cada carta, que es donde está el valor educativo.</p></div></div>
+          <div class="col-md-6"><div class="cs-card"><h3>4. Cada mano cubre las cuatro categorías</h3><p>Incluso tras aplicar el contexto. El reparto usa una búsqueda con retroceso que solo asigna un contexto si conserva esa cobertura.</p></div></div>
+          <div class="col-md-6"><div class="cs-card"><h3>5. Las trampas restan puntos</h3><p>Una palanca dañina cuesta −2, no 0. Si equivocarse es gratis, no hay incentivo a pensar en el límite ético.</p></div></div>
+          <div class="col-md-6"><div class="cs-card"><h3>6. Lo que se dejó fuera (a propósito)</h3><p>Sin cuentas ni registro (sesión anónima, cero fricción). Sin multijugador ni ranking: el objetivo es aprendizaje individual.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CÓMO ESTÁ CONSTRUIDO ── -->
+    <section class="py-5 section-dark" aria-labelledby="t-tecnica">
+      <div class="container">
+        <h2 id="t-tecnica" class="display-6 fw-bold mb-4 section-heading" data-num="05">Cómo está construido</h2>
+        <p class="fs-5 text-muted cs-lead mb-4">
+          Cuatro capas, con el <strong class="text-white">motor de reglas como núcleo puro</strong>, sin dependencias
+          de React ni de red: UI → estado de partida (reducer) → motor de reglas → contenido y persistencia.
+        </p>
+        <div class="row g-4">
+          <div class="col-lg-7">
+            <ul class="text-muted cs-lead">
+              <li><strong class="text-white">Motor de reglas como lógica pura.</strong> Puntuación, reparto y reencuadre por contexto son funciones sin efectos: se prueban sin navegador y se reutilizan en otros modos.</li>
+              <li><strong class="text-white">El contenido vive como datos tipados.</strong> Un redactor puede añadir un caso sin tocar la lógica, y el compilador valida su estructura.</li>
+              <li><strong class="text-white">El puntaje deriva de la regla, nunca se duplica.</strong> El efecto del contexto que se muestra se calcula de la transición real base → ajustada, así lo que se explica siempre coincide con lo que se puntúa.</li>
+              <li><strong class="text-white">Estado como máquina de estados explícita.</strong> Un reducer con cuatro fases e invariantes hace que los estados imposibles no existan.</li>
+              <li><strong class="text-white">Persistencia segura desde el día uno.</strong> Sesión anónima + RLS: cada usuario solo lee e inserta sus propias partidas; solo se guardan partidas completas.</li>
+            </ul>
+          </div>
+          <div class="col-lg-5">
+            <div class="cs-table-wrap">
+              <table class="cs-table">
+                <thead><tr><th>Capa</th><th>Tecnología</th></tr></thead>
+                <tbody>
+                  <tr><td>Framework</td><td>Next.js 16 (App Router) + React 19</td></tr>
+                  <tr><td>Lenguaje</td><td>TypeScript</td></tr>
+                  <tr><td>UI</td><td>Tailwind 4 · Radix · shadcn</td></tr>
+                  <tr><td>Animación</td><td>Motion</td></tr>
+                  <tr><td>Backend</td><td>Supabase (Auth anónima · Postgres · RLS)</td></tr>
+                  <tr><td>Calidad</td><td>Vitest · Biome</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="cs-callout mt-4">
+          <h3 class="mb-2">Calidad y pruebas</h3>
+          <p class="text-muted mb-0">
+            30 tests automatizados en 5 suites, todos sobre el motor de reglas: puntuación, reencuadre por contexto,
+            reparto con restricciones, sinergias entre palancas y el flujo completo de una partida.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── PROCESO ── -->
+    <section class="py-5 section-light" aria-labelledby="t-proceso">
+      <div class="container">
+        <h2 id="t-proceso" class="display-6 fw-bold mb-4 section-heading" data-num="06">Proceso y evolución</h2>
+        <ul class="cs-timeline mb-5">
+          <li><span class="cs-date">9 sep</span><p class="text-muted mt-1 mb-0">Scaffold, baraja inicial y motor de puntuación.</p></li>
+          <li><span class="cs-date">9 sep</span><p class="text-muted mt-1 mb-0">Migración de base de datos y modo solitario de 7 rondas.</p></li>
+          <li><span class="cs-date">18 sep</span><p class="text-muted mt-1 mb-0">Mejoras de jugabilidad, claridad y rediseño de cartas.</p></li>
+          <li><span class="cs-date">19 sep</span><p class="text-muted mt-1 mb-0">Brief del caso responsive y fuente académica con "Saber más".</p></li>
+          <li><span class="cs-date">25 sep</span><p class="text-muted mt-1 mb-0">Mano fija por caso con razones, mano en abanico animada, mesa más limpia.</p></li>
+        </ul>
+        <h3 class="h5 fw-semibold mb-3">Qué haría distinto</h3>
+        <ul class="text-muted cs-lead mb-0">
+          <li>Instrumentar analítica desde el primer día para medir en qué ronda abandona la gente.</li>
+          <li>Validar el contenido pedagógico con un experto en economía del comportamiento antes de ampliar los casos.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ── RESULTADOS ── -->
+    <section class="py-5 section-dark" aria-labelledby="t-resultados">
+      <div class="container">
+        <h2 id="t-resultados" class="display-6 fw-bold mb-4 section-heading" data-num="07">Resultados</h2>
+        <h3 class="h5 fw-semibold mb-3">Entregado</h3>
+        <ul class="text-muted cs-lead">
+          <li>Juego completo y jugable de punta a punta (lobby → 7 rondas → resumen → marca guardada).</li>
+          <li>15 palancas, 10 casos, 4 contextos y 6 sinergias, con contenido original en español.</li>
+          <li>Motor de reglas con 30 pruebas automatizadas.</li>
+          <li>Persistencia segura con sesión anónima y seguridad a nivel de fila.</li>
+        </ul>
+        <p class="text-muted cs-lead mb-0">
+          <strong class="text-white">Impacto:</strong> aún sin lanzamiento público. La tabla de partidas ya guarda
+          puntaje, número de rondas y el detalle de cada ronda, así que el siguiente paso es validar con usuarios y
+          medir en qué ronda abandonan y qué trampas caen más.
+        </p>
+      </div>
+    </section>
+
+    <!-- ── PRÓXIMOS PASOS ── -->
+    <section class="py-5 section-light" aria-labelledby="t-roadmap">
+      <div class="container">
+        <h2 id="t-roadmap" class="display-6 fw-bold mb-4 section-heading" data-num="08">Próximos pasos</h2>
+        <div class="cs-table-wrap">
+          <table class="cs-table">
+            <thead><tr><th>Prioridad</th><th>Iniciativa</th><th>Por qué</th><th>Estado</th></tr></thead>
+            <tbody>
+              <tr><td>1</td><td><strong>Modo combo:</strong> varias palancas con sinergias y conflictos</td><td>Enseña que las intervenciones interactúan</td><td>Motor y tests listos; falta interfaz</td></tr>
+              <tr><td>2</td><td><strong>Modo lienzo:</strong> ubicar palancas en un modelo (Fogg, COM-B, Hook)</td><td>Conecta las palancas con marcos teóricos</td><td>Motor y tests listos; falta interfaz</td></tr>
+              <tr><td>3</td><td><strong>Analítica de aprendizaje:</strong> qué trampas caen más y en qué casos</td><td>Convierte el juego en fuente de datos pedagógicos</td><td>Los datos ya se guardan por ronda</td></tr>
+              <tr><td>4</td><td><strong>Modo en equipo / aula:</strong> marcas compartidas</td><td>Abre un canal B2B (formación, universidades)</td><td>Esquema con <code>is_public</code> previsto</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── MI ROL ── -->
+    <section class="py-5 section-dark" aria-labelledby="t-rol">
+      <div class="container">
+        <h2 id="t-rol" class="display-6 fw-bold mb-4 section-heading" data-num="09">Mi rol</h2>
+        <p class="fs-5 text-muted cs-lead mb-4">Proyecto individual. Lo cubrí de punta a punta:</p>
+        <div class="row g-3">
+          <div class="col-md-3"><div class="cs-card"><h3>Producto</h3><p>Problema, hipótesis, dinámica y sistema de puntuación.</p></div></div>
+          <div class="col-md-3"><div class="cs-card"><h3>Contenido</h3><p>Palancas, casos, contextos y razones, con fuentes académicas.</p></div></div>
+          <div class="col-md-3"><div class="cs-card"><h3>Experiencia</h3><p>Flujo de pantallas, gesto de confirmación, jerarquía de la mesa.</p></div></div>
+          <div class="col-md-3"><div class="cs-card"><h3>Ingeniería</h3><p>Motor de reglas, estado, interfaz, base de datos y seguridad.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CTA ── -->
+    <section class="py-5 section-light text-center" aria-label="Llamada a la acción">
+      <div class="container py-3">
+        <h2 class="display-6 fw-bold mb-3">¿Jugamos una partida?</h2>
+        <p class="text-muted lead mb-4">El código está disponible en GitHub; con gusto te doy un recorrido.</p>
+        <a href="https://github.com/alessvon/juego_cartas_ciencias_comportamiento" class="btn btn-accent btn-lg px-5 me-2" target="_blank" rel="noopener">
+          <i class="bi bi-github me-2" aria-hidden="true"></i>Ver repositorio
+        </a>
+        <a href="proyectos.html" class="btn btn-outline-light btn-lg px-5">
+          <i class="bi bi-arrow-left me-2" aria-hidden="true"></i>Volver a proyectos
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer-dark py-4 text-center" role="contentinfo">
+    <div class="container">
+      <nav class="footer-nav mb-3" aria-label="Links del footer">
+        <a href="sobre-mi.html">Sobre mí</a>
+        <a href="proyectos.html">Proyectos</a>
+        <a href="../index.html#contacto">Contacto</a>
+      </nav>
+      <p class="text-muted small mb-0">&copy; 2026 &middot; Coderhouse &middot; Todos los derechos reservados</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../js/main.js?v=20260810"></script>
+
+</body>
+</html>

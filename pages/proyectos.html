@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Proyectos de Roger Grau, Product Engineer: diseño UX, landing pages, sitios responsive y aplicaciones frontend." />
+  <meta name="description" content="Proyectos de Roger Grau, Product Engineer: plataformas full-stack con IA, LMS multi-tenant y productos educativos, de la hipótesis al despliegue." />
   <meta name="author" content="Roger Grau" />
   <meta name="robots" content="index, follow" />
   <meta name="theme-color" content="#0C0C0C" />
@@ -20,14 +20,14 @@
   <meta property="og:type"        content="website" />
   <meta property="og:url"         content="https://alessvon.github.io/coderhouse-proyecto/pages/proyectos.html" />
   <meta property="og:title"       content="Proyectos | Roger Grau — Product Engineer" />
-  <meta property="og:description" content="Proyectos de Roger Grau, Product Engineer: diseño UX, landing pages, sitios responsive y aplicaciones frontend." />
+  <meta property="og:description" content="Proyectos de Roger Grau, Product Engineer: plataformas full-stack con IA, LMS multi-tenant y productos educativos." />
   <meta property="og:image"       content="https://alessvon.github.io/coderhouse-proyecto/img/og-projects.svg" />
   <meta property="og:locale"      content="es_MX" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card"        content="summary_large_image" />
   <meta name="twitter:title"       content="Proyectos | Roger Grau — Product Engineer" />
-  <meta name="twitter:description" content="Proyectos de Roger Grau, Product Engineer: diseño UX, landing pages, sitios responsive y aplicaciones frontend." />
+  <meta name="twitter:description" content="Proyectos de Roger Grau, Product Engineer: plataformas full-stack con IA, LMS multi-tenant y productos educativos." />
   <meta name="twitter:image"       content="https://alessvon.github.io/coderhouse-proyecto/img/og-projects.svg" />
 
   <!-- Preconnect para acelerar carga de fuentes -->
@@ -95,7 +95,8 @@
         <span class="badge-section mb-3 d-inline-block">Portafolio</span>
         <h1 class="display-4 fw-bold mb-3">Mis Proyectos</h1>
         <p class="lead text-muted-light mx-auto hero-desc">
-          Una colección de trabajos que demuestran mis habilidades en desarrollo web frontend.
+          Tres productos full-stack construidos de extremo a extremo: una plataforma de reclutamiento con agentes de IA,
+          un LMS multi-tenant y un juego educativo sobre economía del comportamiento.
         </p>
       </div>
     </section>
@@ -103,11 +104,11 @@
     <!-- ── FILTROS ───────────────────────────────────────────── -->
     <section class="py-4 section-dark border-bottom border-secondary" aria-label="Filtros de proyectos">
       <div class="container">
-        <div class="d-flex justify-content-center gap-2 flex-wrap" role="group" aria-label="Filtrar por tecnología">
+        <div class="d-flex justify-content-center gap-2 flex-wrap" role="group" aria-label="Filtrar por tipo de proyecto">
           <button class="btn btn-filter active" data-filter="all">Todos</button>
-          <button class="btn btn-filter" data-filter="html-css">HTML &amp; CSS</button>
-          <button class="btn btn-filter" data-filter="bootstrap">Bootstrap</button>
-          <button class="btn btn-filter" data-filter="javascript">JavaScript</button>
+          <button class="btn btn-filter" data-filter="ia">IA</button>
+          <button class="btn btn-filter" data-filter="plataforma">Plataforma</button>
+          <button class="btn btn-filter" data-filter="juego">Juego</button>
         </div>
       </div>
     </section>
@@ -121,91 +122,47 @@
         <div class="pcarousel" role="list" aria-label="Proyectos">
 
           <!-- ── Proyecto 1 ── -->
-          <a class="stack-card project-item" role="listitem" data-category="html-css" href="proyecto-landing-page.html" style="--card-img: url('../img/projects/landing-page.svg')" aria-label="Ver proyecto Landing Page">
+          <a class="stack-card project-item" role="listitem" data-category="ia plataforma" href="proyecto-contratacion-pro.html" style="--card-img: url('../img/projects/contratacion-pro.svg')" aria-label="Ver proyecto Contratacion.pro">
             <div class="stack-card__content">
-              <span class="stack-card__num">01</span>
-              <h3 class="stack-card__title">Landing Page</h3>
-              <p class="stack-card__desc">Página de presentación de producto con diseño moderno: hero, características, testimonios y llamada a la acción.</p>
+              <span class="stack-card__num">01 · Destacado</span>
+              <h3 class="stack-card__title">Contratacion.pro</h3>
+              <p class="stack-card__desc">ATS multiempresa con ocho agentes de IA que leen CVs, puntúan candidatos con evidencia y vigilan plazos. La IA propone, la persona decide.</p>
               <ul class="stack-card__tech list-unstyled">
-                <li><span class="glass-chip">HTML5</span></li>
-                <li><span class="glass-chip">CSS3</span></li>
-                <li><span class="glass-chip">Flexbox</span></li>
+                <li><span class="glass-chip">Next.js 16</span></li>
+                <li><span class="glass-chip">Supabase</span></li>
+                <li><span class="glass-chip">Claude · IA</span></li>
               </ul>
               <span class="stack-card__cta">Ver proyecto <i class="bi bi-arrow-right" aria-hidden="true"></i></span>
             </div>
           </a>
 
           <!-- ── Proyecto 2 ── -->
-          <a class="stack-card project-item" role="listitem" data-category="bootstrap" href="proyecto-sitio-responsive.html" style="--card-img: url('../img/projects/sitio-responsive.svg')" aria-label="Ver proyecto Sitio Responsive">
+          <a class="stack-card project-item" role="listitem" data-category="plataforma" href="proyecto-corus.html" style="--card-img: url('../img/projects/corus.svg')" aria-label="Ver proyecto Corus">
             <div class="stack-card__content">
               <span class="stack-card__num">02</span>
-              <h3 class="stack-card__title">Sitio Responsive</h3>
-              <p class="stack-card__desc">Sitio multipágina completamente responsive usando el sistema de grilla de Bootstrap 5 y sus componentes.</p>
+              <h3 class="stack-card__title">Corus</h3>
+              <p class="stack-card__desc">Plataforma LMS multi-tenant de itinerarios de aprendizaje: las organizaciones diseñan rutas, inscriben a su gente y siguen su avance en tiempo real.</p>
               <ul class="stack-card__tech list-unstyled">
-                <li><span class="glass-chip">Bootstrap 5</span></li>
-                <li><span class="glass-chip">CSS3</span></li>
-                <li><span class="glass-chip">Grid</span></li>
+                <li><span class="glass-chip">Next.js</span></li>
+                <li><span class="glass-chip">Postgres · RLS</span></li>
+                <li><span class="glass-chip">TypeScript</span></li>
               </ul>
               <span class="stack-card__cta">Ver proyecto <i class="bi bi-arrow-right" aria-hidden="true"></i></span>
             </div>
           </a>
 
           <!-- ── Proyecto 3 ── -->
-          <a class="stack-card project-item" role="listitem" data-category="javascript" href="proyecto-app-interactiva.html" style="--card-img: url('../img/projects/app-js.svg')" aria-label="Ver proyecto App Interactiva">
+          <a class="stack-card project-item" role="listitem" data-category="juego" href="proyecto-nudge-sludge.html" style="--card-img: url('../img/projects/nudge-sludge.svg')" aria-label="Ver proyecto Nudge o Sludge">
             <div class="stack-card__content">
               <span class="stack-card__num">03</span>
-              <h3 class="stack-card__title">App Interactiva</h3>
-              <p class="stack-card__desc">Aplicación web con manipulación del DOM, eventos de usuario y filtrado dinámico sin frameworks externos.</p>
+              <h3 class="stack-card__title">Nudge o Sludge</h3>
+              <p class="stack-card__desc">Juego de cartas para aprender economía del comportamiento: la misma palanca puede ser acierto o trampa según el contexto. Motor de reglas con 30 tests.</p>
               <ul class="stack-card__tech list-unstyled">
-                <li><span class="glass-chip">JavaScript</span></li>
-                <li><span class="glass-chip">HTML5</span></li>
-                <li><span class="glass-chip">CSS3</span></li>
+                <li><span class="glass-chip">React 19</span></li>
+                <li><span class="glass-chip">TypeScript</span></li>
+                <li><span class="glass-chip">Supabase</span></li>
               </ul>
               <span class="stack-card__cta">Ver proyecto <i class="bi bi-arrow-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <!-- ── Proyecto 4 ── -->
-          <a class="stack-card project-item" role="listitem" data-category="html-css" href="proyecto-blog-personal.html" style="--card-img: url('../img/projects/blog-personal.svg')" aria-label="Ver proyecto Blog Personal">
-            <div class="stack-card__content">
-              <span class="stack-card__num">04</span>
-              <h3 class="stack-card__title">Blog Personal</h3>
-              <p class="stack-card__desc">Blog con diseño editorial, tipografía cuidada, jerarquía visual y navegación entre artículos con rutas relativas.</p>
-              <ul class="stack-card__tech list-unstyled">
-                <li><span class="glass-chip">HTML5</span></li>
-                <li><span class="glass-chip">CSS3</span></li>
-              </ul>
-              <span class="stack-card__cta">Ver proyecto <i class="bi bi-arrow-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <!-- ── Proyecto 5 ── -->
-          <a class="stack-card project-item" role="listitem" data-category="bootstrap" href="proyecto-ecommerce-ui.html" style="--card-img: url('../img/projects/ecommerce-ui.svg')" aria-label="Ver proyecto E-commerce UI">
-            <div class="stack-card__content">
-              <span class="stack-card__num">05</span>
-              <h3 class="stack-card__title">E-commerce UI</h3>
-              <p class="stack-card__desc">Interfaz de tienda online con catálogo de productos, carrito y checkout, con componentes de Bootstrap.</p>
-              <ul class="stack-card__tech list-unstyled">
-                <li><span class="glass-chip">Bootstrap 5</span></li>
-                <li><span class="glass-chip">CSS3</span></li>
-              </ul>
-              <span class="stack-card__cta">Ver proyecto <i class="bi bi-arrow-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <!-- ── Proyecto 6 (este portfolio) ── -->
-          <a class="stack-card project-item" role="listitem" data-category="html-css bootstrap" href="../index.html" style="--card-img: url('../img/projects/portfolio.svg')" aria-label="Ver este portfolio">
-            <div class="stack-card__content">
-              <span class="stack-card__num">06 · Destacado</span>
-              <h3 class="stack-card__title">Este Portfolio</h3>
-              <p class="stack-card__desc">Portfolio personal completo, proyecto final de Coderhouse. Diseño responsive con tema oscuro y múltiples páginas.</p>
-              <ul class="stack-card__tech list-unstyled">
-                <li><span class="glass-chip">HTML5</span></li>
-                <li><span class="glass-chip">Bootstrap 5</span></li>
-                <li><span class="glass-chip">CSS3</span></li>
-                <li><span class="glass-chip">JS</span></li>
-              </ul>
-              <span class="stack-card__cta">Ver sitio <i class="bi bi-arrow-right" aria-hidden="true"></i></span>
             </div>
           </a>
 

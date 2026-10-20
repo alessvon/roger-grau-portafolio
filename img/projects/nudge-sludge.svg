@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 220" role="img" aria-labelledby="title">
+  <title id="title">Vista previa Nudge o Sludge — juego de cartas conductual</title>
+  <rect width="400" height="220" fill="#0f766e"/>
+  <!-- mano de cartas en abanico -->
+  <g transform="translate(200 150)">
+    <rect x="-28" y="-80" width="56" height="86" rx="8" fill="#ffffff" opacity="0.9" transform="rotate(-24)"/>
+    <rect x="-28" y="-80" width="56" height="86" rx="8" fill="#ffffff" opacity="0.95" transform="rotate(-12)"/>
+    <rect x="-28" y="-84" width="56" height="90" rx="8" fill="#E8FF00"/>
+    <rect x="-28" y="-80" width="56" height="86" rx="8" fill="#ffffff" opacity="0.95" transform="rotate(12)"/>
+    <rect x="-28" y="-80" width="56" height="86" rx="8" fill="#ffffff" opacity="0.9" transform="rotate(24)"/>
+  </g>
+  <text x="22" y="40" fill="#ffffff" font-family="Arial, sans-serif" font-size="18" font-weight="bold">Nudge o Sludge</text>
+  <text x="22" y="60" fill="#ffffff" font-family="Arial, sans-serif" font-size="12" opacity="0.8">Economía del comportamiento</text>
+</svg>

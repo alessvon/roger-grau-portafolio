@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Contratacion.pro — ATS multiempresa con ocho agentes de IA que leen CVs, puntúan candidatos con evidencia y vigilan plazos, sin quitar la decisión final a la persona. Caso de estudio de Roger Grau, Product Engineer." />
+  <meta name="author" content="Roger Grau" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#0C0C0C" />
+  <title>Contratacion.pro — ATS con agentes de IA | Roger Grau</title>
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230C0C0C'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='monospace' font-size='20' fill='%23E8FF00'>R</text></svg>" type="image/svg+xml" />
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://alessvon.github.io/coderhouse-proyecto/pages/proyecto-contratacion-pro.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="article" />
+  <meta property="og:url"         content="https://alessvon.github.io/coderhouse-proyecto/pages/proyecto-contratacion-pro.html" />
+  <meta property="og:title"       content="Contratacion.pro — un ATS donde la IA propone y la persona decide" />
+  <meta property="og:description" content="Rediseñé el proceso de selección de una agencia de reclutamiento alrededor de ocho agentes de IA, sin quitarle la decisión final a la persona." />
+  <meta property="og:image"       content="https://alessvon.github.io/coderhouse-proyecto/img/projects/contratacion-pro.svg" />
+  <meta property="og:locale"      content="es_MX" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content="Contratacion.pro — ATS con agentes de IA" />
+  <meta name="twitter:description" content="Un ATS multiempresa con ocho agentes de IA que proponen; la persona decide." />
+  <meta name="twitter:image"       content="https://alessvon.github.io/coderhouse-proyecto/img/projects/contratacion-pro.svg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=IBM+Plex+Mono:wght@400;500&family=Libre+Baskerville&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css?v=20260810" />
+
+  <!-- Estilos propios del caso de estudio -->
+  <style>
+    .cs-lead { max-width: 820px; }
+    /* Ficha */
+    .cs-meta { display: flex; flex-wrap: wrap; gap: 1.5rem 2.5rem; }
+    .cs-meta dt { color: #E8FF00; font-family: "IBM Plex Mono", monospace; font-size: .68rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: .2rem; }
+    .cs-meta dd { margin: 0; color: #E8E6E0; font-size: .95rem; }
+    /* Métricas */
+    .cs-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+    .cs-stat { border: 1px solid rgba(232,255,0,.18); border-radius: 14px; padding: 1.5rem 1.25rem; background: rgba(232,255,0,.03); }
+    .cs-stat__num { font-family: "Syne", sans-serif; font-weight: 800; font-size: clamp(1.8rem, 4vw, 2.6rem); color: #E8FF00; line-height: 1; }
+    .cs-stat__label { color: #a8a49c; font-size: .82rem; margin-top: .5rem; }
+    /* Callout */
+    .cs-callout { border-left: 3px solid #E8FF00; background: rgba(232,255,0,.04); border-radius: 0 12px 12px 0; padding: 1.25rem 1.5rem; }
+    .cs-callout h3 { color: #E8FF00; font-size: 1rem; letter-spacing: .5px; }
+    /* Tablas */
+    .cs-table { width: 100%; border-collapse: collapse; font-size: .92rem; }
+    .cs-table th, .cs-table td { text-align: left; padding: .8rem 1rem; border-bottom: 1px solid rgba(232,230,224,.1); vertical-align: top; }
+    .cs-table thead th { color: #E8FF00; font-family: "IBM Plex Mono", monospace; font-size: .72rem; letter-spacing: 1px; text-transform: uppercase; }
+    .cs-table tbody tr:hover { background: rgba(232,255,0,.03); }
+    .cs-table strong { color: #E8E6E0; }
+    .cs-table-wrap { overflow-x: auto; border: 1px solid rgba(232,230,224,.1); border-radius: 14px; }
+    /* Principios / decisiones */
+    .cs-card { border: 1px solid rgba(232,230,224,.12); border-radius: 14px; padding: 1.5rem; height: 100%; background: rgba(255,255,255,.015); }
+    .cs-card__kicker { color: #E8FF00; font-family: "IBM Plex Mono", monospace; font-size: .7rem; letter-spacing: 2px; }
+    .cs-card h3 { font-size: 1.1rem; margin: .4rem 0 .6rem; }
+    .cs-card p { color: #a8a49c; font-size: .92rem; margin: 0; }
+    .cs-dl dt { font-family: "IBM Plex Mono", monospace; font-size: .68rem; letter-spacing: 1px; text-transform: uppercase; color: #E8FF00; margin-top: .6rem; }
+    .cs-dl dd { margin: 0 0 .2rem; color: #c9c6be; font-size: .92rem; }
+    /* Semáforo */
+    .cs-dot { display: inline-block; width: .7rem; height: .7rem; border-radius: 50%; margin-right: .5rem; vertical-align: middle; }
+    /* Timeline */
+    .cs-timeline { list-style: none; padding: 0; margin: 0; border-left: 2px solid rgba(232,255,0,.25); }
+    .cs-timeline li { position: relative; padding: 0 0 1.5rem 1.75rem; }
+    .cs-timeline li::before { content: ""; position: absolute; left: -7px; top: .35rem; width: 12px; height: 12px; border-radius: 50%; background: #E8FF00; }
+    .cs-timeline .cs-date { color: #E8FF00; font-family: "IBM Plex Mono", monospace; font-size: .75rem; letter-spacing: 1px; }
+    /* Now / Next / Later */
+    .cs-nnl { border-top: 3px solid; border-radius: 14px; padding: 1.5rem; background: rgba(255,255,255,.015); height: 100%; }
+    .cs-nnl h3 { font-size: 1rem; letter-spacing: .5px; }
+    .cs-nnl ul { padding-left: 1.1rem; margin: 0; }
+    .cs-nnl li { color: #a8a49c; font-size: .9rem; margin-bottom: .5rem; }
+    @media (max-width: 767.98px) {
+      .cs-stats { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Malla de partículas interactiva — fondo global -->
+  <canvas id="particles-bg" aria-hidden="true"></canvas>
+
+  <!-- HEADER -->
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="navbar" aria-label="Navegación principal">
+      <div class="container">
+        <a class="navbar-brand" href="../index.html">PRODUCT ENGINEER</a>
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Abrir menú">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navMenu">
+          <ul class="navbar-nav ms-auto gap-2">
+            <li class="nav-item"><a class="nav-link" href="sobre-mi.html"><span class="nav-num">01</span> Sobre mí</a></li>
+            <li class="nav-item"><a class="nav-link active" href="proyectos.html" aria-current="page"><span class="nav-num">02</span> Proyectos</a></li>
+            <li class="nav-item"><a class="nav-link" href="../index.html#contacto"><span class="nav-num">03</span> Contacto</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- MAIN -->
+  <main>
+
+    <!-- ── HERO ──────────────────────────────────────────────── -->
+    <section class="page-hero d-flex align-items-center" aria-label="Encabezado del proyecto">
+      <div class="container text-white">
+        <a href="proyectos.html" class="btn btn-outline-light btn-sm px-3 mb-4">
+          <i class="bi bi-arrow-left me-2" aria-hidden="true"></i>Proyectos
+        </a>
+        <span class="badge-section mb-3 d-inline-block">Caso de estudio · Plataforma full-stack con IA</span>
+        <h1 class="display-4 fw-bold mb-3">Contratacion.pro</h1>
+        <p class="lead text-muted-light cs-lead mb-0">
+          Un ATS donde la IA propone y la persona decide. Rediseñé el proceso de selección de una agencia de
+          reclutamiento alrededor de ocho agentes de IA que leen CVs, puntúan candidatos con evidencia y vigilan
+          plazos, sin quitarle nunca la decisión final a la persona.
+        </p>
+      </div>
+    </section>
+
+    <!-- ── FICHA ─────────────────────────────────────────────── -->
+    <section class="py-4 section-dark border-top border-bottom border-secondary" aria-label="Ficha del proyecto">
+      <div class="container">
+        <dl class="cs-meta mb-4">
+          <div>
+            <dt>Rol</dt>
+            <dd>Product Engineer — producto, diseño y código</dd>
+          </div>
+          <div>
+            <dt>Periodo</dt>
+            <dd>Sep – Oct 2026 · 6 semanas</dd>
+          </div>
+          <div>
+            <dt>Estado</dt>
+            <dd>En producción · etapa de piloto</dd>
+          </div>
+          <div>
+            <dt>Código</dt>
+            <dd>Disponible a petición</dd>
+          </div>
+        </dl>
+        <ul class="stack-card__tech list-unstyled d-flex flex-wrap gap-2 mb-0">
+          <li><span class="glass-chip">Next.js 16</span></li>
+          <li><span class="glass-chip">React 19</span></li>
+          <li><span class="glass-chip">TypeScript</span></li>
+          <li><span class="glass-chip">Supabase · Postgres + RLS</span></li>
+          <li><span class="glass-chip">Claude · AI SDK</span></li>
+          <li><span class="glass-chip">Vercel Workflow</span></li>
+          <li><span class="glass-chip">Sentry</span></li>
+          <li><span class="glass-chip">PostHog</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ── MÉTRICAS ──────────────────────────────────────────── -->
+    <section class="py-5 section-light" aria-label="Cifras del proyecto">
+      <div class="container">
+        <div class="cs-stats">
+          <div class="cs-stat">
+            <div class="cs-stat__num">8</div>
+            <div class="cs-stat__label">agentes de IA con rol y permiso propio</div>
+          </div>
+          <div class="cs-stat">
+            <div class="cs-stat__num">45&nbsp;mil</div>
+            <div class="cs-stat__label">líneas de TypeScript</div>
+          </div>
+          <div class="cs-stat">
+            <div class="cs-stat__num">25</div>
+            <div class="cs-stat__label">tablas de Postgres con aislamiento por organización (RLS)</div>
+          </div>
+          <div class="cs-stat">
+            <div class="cs-stat__num">6</div>
+            <div class="cs-stat__label">semanas de idea a producto operativo (~102 commits, ~57 PR)</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── RESUMEN ───────────────────────────────────────────── -->
+    <section class="py-5 section-dark" aria-labelledby="t-resumen">
+      <div class="container">
+        <h2 id="t-resumen" class="display-6 fw-bold mb-4 section-heading" data-num="01">Resumen</h2>
+        <p class="fs-5 text-muted cs-lead">
+          <strong class="text-white">Reduje el trabajo repetitivo de reclutar</strong> —leer CVs, comparar, redactar,
+          vigilar plazos— sin perder auditabilidad ni control humano.
+        </p>
+        <p class="text-muted cs-lead">
+          Contratacion.pro es un ATS multiempresa para agencias de reclutamiento y equipos internos de talento. Reúne
+          vacantes, candidatos, clientes, pipeline, reportes y chat de equipo en un solo lugar, y añade un equipo de
+          agentes de IA que operan en cada etapa del proceso. Tres decisiones definen el producto:
+        </p>
+        <div class="row g-3 mt-2">
+          <div class="col-md-4">
+            <div class="cs-card">
+              <span class="cs-card__kicker">01</span>
+              <h3>La IA recomienda, la persona decide</h3>
+              <p>Ningún agente cambia datos sin confirmación explícita.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="cs-card">
+              <span class="cs-card__kicker">02</span>
+              <h3>Cada puntaje se explica</h3>
+              <p>El match muestra la evidencia, las brechas y qué requisito obligatorio falta.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="cs-card">
+              <span class="cs-card__kicker">03</span>
+              <h3>El costo de la IA es visible</h3>
+              <p>Cada agente tiene límites, registro y costo estimado por organización.</p>
+            </div>
+          </div>
+        </div>
+        <div class="cs-callout mt-4">
+          <h3 class="mb-3">Qué demuestra este proyecto</h3>
+          <ul class="mb-0 text-muted">
+            <li>Descubrimiento y estrategia de producto sobre un dominio real.</li>
+            <li>Diseño de sistemas con IA en producción, no una demo.</li>
+            <li>Ejecución de extremo a extremo: producto, UX, datos, seguridad y costos.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── EL PROBLEMA ───────────────────────────────────────── -->
+    <section class="py-5 section-light" aria-labelledby="t-problema">
+      <div class="container">
+        <h2 id="t-problema" class="display-6 fw-bold mb-4 section-heading" data-num="02">El problema</h2>
+        <p class="fs-5 text-muted cs-lead">
+          Reclutar se volvió un problema de <strong class="text-white">coordinación y criterio</strong>, no de falta de
+          candidatos.
+        </p>
+        <p class="text-muted cs-lead mb-4">
+          Una agencia pequeña o mediana trabaja hoy con vacantes en una hoja de cálculo, CVs en el correo,
+          conversaciones en WhatsApp y el seguimiento al cliente en la cabeza de alguien. Eso produce cuatro fallas
+          medibles: contexto fragmentado (una vacante vive en cinco herramientas), criterio inconsistente (cada persona
+          lee los CVs con reglas distintas), plazos invisibles (nadie ve a tiempo qué vacantes están por incumplir) y
+          cuellos de botella sin evidencia (la dirección no sabe dónde se atoran los procesos).
+        </p>
+        <h3 class="h5 fw-semibold mb-3">¿Para quién es?</h3>
+        <div class="cs-table-wrap">
+          <table class="cs-table">
+            <thead>
+              <tr><th>Persona</th><th>Trabajo a resolver</th><th>Qué le duele hoy</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Recruiter</strong></td><td>Cubrir vacantes rápido y con calidad</td><td>Filtrar CVs a mano; capturar datos repetidos</td></tr>
+              <tr><td><strong>Lead recruiter / Owner</strong></td><td>Repartir carga y cumplir al cliente</td><td>No ve riesgo de plazo ni carga por persona</td></tr>
+              <tr><td><strong>Director / dueño de agencia</strong></td><td>Entender el negocio y escalar</td><td>Sin métricas de embudo; costos de IA opacos</td></tr>
+              <tr><td><strong>Candidato</strong></td><td>Postularse sin fricción</td><td>Formularios largos, cuentas obligatorias</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── ESTRATEGIA ────────────────────────────────────────── -->
+    <section class="py-5 section-dark" aria-labelledby="t-estrategia">
+      <div class="container">
+        <h2 id="t-estrategia" class="display-6 fw-bold mb-4 section-heading" data-num="03">Estrategia y principios</h2>
+        <p class="fs-5 text-muted cs-lead mb-4">
+          Elegí automatizar el trabajo repetitivo y dejar el juicio a las personas, porque en reclutamiento
+          <strong class="text-white">un error de la IA es un error con consecuencias para una persona.</strong>
+        </p>
+
+        <h3 class="h5 fw-semibold mb-3">Qué NO construí (y por qué)</h3>
+        <div class="row g-3 mb-5">
+          <div class="col-md-6"><div class="cs-card"><h3>Rechazo automático de candidatos</h3><p>El riesgo legal y reputacional supera el ahorro de tiempo.</p></div></div>
+          <div class="col-md-6"><div class="cs-card"><h3>Integraciones con LinkedIn y bolsas</h3><p>Dependen de terceros y no son la ventaja competitiva.</p></div></div>
+          <div class="col-md-6"><div class="cs-card"><h3>Correo, calendario y WhatsApp</h3><p>Quedaron en la hoja de ruta hasta validar el flujo central.</p></div></div>
+          <div class="col-md-6"><div class="cs-card"><h3>Un agente "autónomo" con herramientas</h3><p>Un flujo de pasos con LLM es más barato, predecible y auditable.</p></div></div>
+        </div>
+
+        <h3 class="h5 fw-semibold mb-3">Principios de producto</h3>
+        <div class="row g-3">
+          <div class="col-md-4"><div class="cs-card"><i class="bi bi-person-check text-accent fs-4"></i><h3 class="mt-2">Humano en el circuito</h3><p>Las acciones que modifican datos se proponen y esperan confirmación.</p></div></div>
+          <div class="col-md-4"><div class="cs-card"><i class="bi bi-search text-accent fs-4"></i><h3 class="mt-2">Explicable por diseño</h3><p>Todo puntaje cita su fuente: perfil, CV o descripción de la vacante.</p></div></div>
+          <div class="col-md-4"><div class="cs-card"><i class="bi bi-sliders text-accent fs-4"></i><h3 class="mt-2">Gobernable</h3><p>El administrador enciende o apaga cada agente, fija límites y define qué rol lo usa.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── LA SOLUCIÓN ───────────────────────────────────────── -->
+    <section class="py-5 section-light" aria-labelledby="t-solucion">
+      <div class="container">
+        <h2 id="t-solucion" class="display-6 fw-bold mb-4 section-heading" data-num="04">La solución</h2>
+        <p class="fs-5 text-muted cs-lead mb-4">
+          Un flujo único —<strong class="text-white">Vacante → Candidatos → Selección → Envío al cliente →
+          Contratación</strong>— con un agente de IA apoyando cada paso.
+        </p>
+
+        <h3 class="h5 fw-semibold mb-3">Los ocho agentes</h3>
+        <div class="cs-table-wrap mb-5">
+          <table class="cs-table">
+            <thead><tr><th>Agente</th><th>Rol</th><th>Qué hace</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Octo</strong></td><td>Asistente de la operación</td><td>Chat que consulta vacantes, candidatos y reportes, y orquesta al resto</td></tr>
+              <tr><td><strong>Lupa</strong></td><td>Lectura de CVs</td><td>Convierte un CV (PDF o Word) en un perfil estructurado; deja en blanco lo que el CV no dice</td></tr>
+              <tr><td><strong>Radar</strong></td><td>Match</td><td>Puntúa de 0 a 100 frente a cada vacante, con evidencia y brechas</td></tr>
+              <tr><td><strong>Ábaco</strong></td><td>Análisis</td><td>Compara periodos y explica qué cambió y por qué</td></tr>
+              <tr><td><strong>Pluma</strong></td><td>Redacción</td><td>Escribe la vacante desde un brief y los resúmenes para el cliente</td></tr>
+              <tr><td><strong>Faro</strong></td><td>Redescubrimiento</td><td>Encuentra en el banco de talento a quienes hoy sí calzan</td></tr>
+              <tr><td><strong>Alerta</strong></td><td>Plazos</td><td>Avisa antes de que venza el plazo de cada cliente</td></tr>
+              <tr><td><strong>Escudo</strong></td><td>Seguridad</td><td>Aislamiento por organización e historial de cada acción</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 class="h5 fw-semibold mb-3">Un ejemplo: cómo se calcula el match</h3>
+        <p class="text-muted cs-lead mb-4">
+          El puntaje no lo inventa el modelo: lo calcula código determinista a partir de lo que el modelo evaluó. El
+          modelo puntúa cuatro dimensiones con evidencia y el sistema las combina con pesos fijos y reglas explícitas.
+        </p>
+        <div class="cs-table-wrap mb-4">
+          <table class="cs-table">
+            <thead><tr><th>Dimensión</th><th>Peso</th><th>Nota de diseño</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Skills técnicas</strong></td><td>40 %</td><td>Cobertura de imprescindibles (peso alto) y deseables (peso bajo)</td></tr>
+              <tr><td><strong>Experiencia</strong></td><td>30 %</td><td>Años frente al mínimo y afinidad de dominio</td></tr>
+              <tr><td><strong>Seniority</strong></td><td>20 %</td><td>Distancia entre el nivel del candidato y el del puesto</td></tr>
+              <tr><td><strong>Idioma</strong></td><td>10 %</td><td>Solo con evidencia explícita; sin evidencia, no puntúa (no penaliza)</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <ul class="text-muted cs-lead">
+          <li><span class="cs-dot" style="background:#22c55e"></span><strong class="text-white">80+</strong> alto match · <span class="cs-dot" style="background:#eab308"></span><strong class="text-white">60–79</strong> posible match · <span class="cs-dot" style="background:#ef4444"></span><strong class="text-white">&lt;60</strong> bajo match · "no cumple requisitos" si falta un imprescindible.</li>
+          <li><strong class="text-white">Requisito eliminatorio:</strong> si falta, el puntaje de skills se limita a 40, aunque el resto sea excelente.</li>
+          <li><strong class="text-white">Equidad:</strong> la instrucción al modelo ignora señales demográficas o protegidas; los motivos se basan solo en requisitos del puesto.</li>
+        </ul>
+        <div class="cs-callout mt-4">
+          <h3 class="mb-2">Decisión: "El LLM evalúa, el código decide"</h3>
+          <p class="text-muted mb-0">
+            Separar la evaluación (probabilística) del cálculo y los umbrales (deterministas) hace el resultado
+            reproducible, ajustable sin reentrenar y defendible ante un cliente que pregunte "¿por qué este puntaje?".
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── DECISIONES ────────────────────────────────────────── -->
+    <section class="py-5 section-dark" aria-labelledby="t-decisiones">
+      <div class="container">
+        <h2 id="t-decisiones" class="display-6 fw-bold mb-4 section-heading" data-num="05">Decisiones de producto e ingeniería</h2>
+        <p class="fs-5 text-muted cs-lead mb-4">
+          Cada decisión importante tuvo una alternativa razonable; estas son las que más moldearon el producto.
+        </p>
+        <div class="accordion accordion-flush" id="cs-decisiones">
+          <div class="cs-card mb-3">
+            <h3>1. Flujo de pasos con LLM, no un agente autónomo</h3>
+            <dl class="cs-dl mb-0">
+              <dt>Contexto</dt><dd>El primer agente (screening) debía ser barato y auditable.</dd>
+              <dt>Decisión</dt><dd>Flujo determinista con pasos que llaman al modelo: el modelo redacta el motivo, la acción recomendada sale de reglas en código.</dd>
+              <dt>Consecuencia</dt><dd>Costo predecible, comportamiento reproducible y trazabilidad por paso. Las herramientas se usan solo donde hay que explorar datos (Octo).</dd>
+            </dl>
+          </div>
+          <div class="cs-card mb-3">
+            <h3>2. Ejecución durable con reintentos en lugar de tareas "en segundo plano"</h3>
+            <dl class="cs-dl mb-0">
+              <dt>Contexto</dt><dd>El cálculo de match se disparaba dentro de la propia petición, sin reintentos ni control.</dd>
+              <dt>Decisión</dt><dd>Migrar a Vercel Workflow: un flujo por postulación, pasos con reintento automático, errores fatales distinguidos de los reintentables y respeto del <code>retry-after</code> del proveedor.</dd>
+              <dt>Consecuencia</dt><dd>Cada ejecución es idempotente. Si las entradas no cambiaron, el análisis guardado se reutiliza sin llamar al modelo: ahorro directo de costo.</dd>
+            </dl>
+          </div>
+          <div class="cs-card mb-3">
+            <h3>3. Confirmación firmada para toda acción que modifica datos</h3>
+            <dl class="cs-dl mb-0">
+              <dt>Contexto</dt><dd>Octo puede mover candidatos, crear vacantes y asignar recruiters desde el chat.</dd>
+              <dt>Decisión</dt><dd>Cada acción se propone como tarjeta y la aprobación viaja firmada; las herramientas se registran solo si el rol tiene la capacidad correspondiente.</dd>
+              <dt>Consecuencia</dt><dd>Doble guardia: el modelo no ve herramientas que el rol no puede usar, y el servidor las vuelve a verificar. Ocultar un botón no cuenta como control.</dd>
+            </dl>
+          </div>
+          <div class="cs-card mb-3">
+            <h3>4. Filtro de alcance antes del asistente</h3>
+            <dl class="cs-dl mb-0">
+              <dt>Contexto</dt><dd>Un chat abierto es un canal de uso indebido y de costo.</dd>
+              <dt>Decisión</dt><dd>Un modelo pequeño y barato decide primero si el mensaje trata de la plataforma; si no, responde con un texto fijo. Hay tope de longitud por mensaje.</dd>
+              <dt>Consecuencia</dt><dd>El costo del modelo principal solo se paga por consultas legítimas.</dd>
+            </dl>
+          </div>
+          <div class="cs-card mb-3">
+            <h3>5. Una sola fuente de verdad para los permisos</h3>
+            <dl class="cs-dl mb-0">
+              <dt>Contexto</dt><dd>El acceso a agentes podía configurarse desde dos pantallas.</dd>
+              <dt>Decisión</dt><dd>Ambas escriben en la misma tabla de capacidades por rol, así nunca se contradicen. El administrador siempre conserva acceso.</dd>
+              <dt>Consecuencia</dt><dd>Modelo de acceso uniforme para los ocho agentes.</dd>
+            </dl>
+          </div>
+          <div class="cs-card">
+            <h3>6. Seguimiento global separado de los clientes</h3>
+            <dl class="cs-dl mb-0">
+              <dt>Contexto</dt><dd>El rol "admin" pertenece a una organización, no a la plataforma.</dd>
+              <dt>Decisión</dt><dd>El seguimiento entre organizaciones vive en una sección propia, con credenciales y sesión distintas, ruta configurable y registro de intentos de acceso.</dd>
+              <dt>Consecuencia</dt><dd>El dueño de la plataforma ve uso y costo por organización sin mezclar privilegios con los de un cliente.</dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── ARQUITECTURA ──────────────────────────────────────── -->
+    <section class="py-5 section-light" aria-labelledby="t-arquitectura">
+      <div class="container">
+        <h2 id="t-arquitectura" class="display-6 fw-bold mb-4 section-heading" data-num="06">Arquitectura</h2>
+        <p class="fs-5 text-muted cs-lead mb-4">
+          Una aplicación Next.js sobre Supabase, donde el aislamiento entre clientes lo impone
+          <strong class="text-white">la base de datos y no el código de la interfaz.</strong>
+        </p>
+        <div class="row g-4">
+          <div class="col-lg-7">
+            <ul class="text-muted cs-lead">
+              <li><strong class="text-white">Aplicación:</strong> Next.js 16 (App Router) y React 19, TypeScript estricto, Tailwind 4.</li>
+              <li><strong class="text-white">Datos:</strong> Postgres en Supabase con políticas de acceso por fila ligadas a la organización. 25 tablas, 23 migraciones versionadas.</li>
+              <li><strong class="text-white">IA:</strong> modelos de Anthropic mediante el AI SDK; salidas validadas con esquemas (zod) para que ningún texto libre llegue a la base sin forma conocida.</li>
+              <li><strong class="text-white">Segundo plano:</strong> Vercel Workflow para el cálculo de match, los re-scoreos masivos y la búsqueda de Faro.</li>
+              <li><strong class="text-white">Interfaz:</strong> tablero Kanban con arrastrar y soltar, editor enriquecido para vacantes, vistas guardadas por usuario.</li>
+              <li><strong class="text-white">Observabilidad:</strong> registro central, reporte de errores con Sentry y analítica de producto con PostHog.</li>
+            </ul>
+          </div>
+          <div class="col-lg-5">
+            <div class="cs-table-wrap">
+              <table class="cs-table">
+                <thead><tr><th>Capa</th><th>Tecnología</th></tr></thead>
+                <tbody>
+                  <tr><td>Framework</td><td>Next.js 16, React 19, TypeScript</td></tr>
+                  <tr><td>Estilos</td><td>Tailwind CSS 4</td></tr>
+                  <tr><td>Datos y auth</td><td>Supabase (Postgres, RLS, Auth, Storage)</td></tr>
+                  <tr><td>IA</td><td>Claude (Anthropic) vía AI SDK, zod</td></tr>
+                  <tr><td>Segundo plano</td><td>Vercel Workflow</td></tr>
+                  <tr><td>Interfaz</td><td>dnd-kit, Tiptap, Mammoth</td></tr>
+                  <tr><td>Observabilidad</td><td>Sentry, PostHog, OpenTelemetry</td></tr>
+                  <tr><td>Calidad</td><td>Biome, ESLint, TS estricto</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SEGURIDAD Y COSTOS ────────────────────────────────── -->
+    <section class="py-5 section-dark" aria-labelledby="t-seguridad">
+      <div class="container">
+        <h2 id="t-seguridad" class="display-6 fw-bold mb-4 section-heading" data-num="07">Confianza, seguridad y costos</h2>
+        <p class="fs-5 text-muted cs-lead mb-4">
+          Los agentes de un producto de personas necesitan <strong class="text-white">límites técnicos</strong>, no
+          solo buenas intenciones.
+        </p>
+        <div class="cs-table-wrap mb-4">
+          <table class="cs-table">
+            <thead><tr><th>Riesgo</th><th>Control implementado</th></tr></thead>
+            <tbody>
+              <tr><td>Acceso entre organizaciones</td><td>Políticas de acceso por fila (RLS) en las tablas de negocio</td></tr>
+              <tr><td>Instrucciones maliciosas dentro de un CV</td><td>El CV se trata como dato, no como instrucción; la salida se valida con esquema y el modelo de screening no tiene herramientas</td></tr>
+              <tr><td>Sesgo en la evaluación</td><td>El modelo ignora señales demográficas; los motivos citan solo requisitos del puesto</td></tr>
+              <tr><td>Acciones no autorizadas del asistente</td><td>Herramientas filtradas por capacidad del rol, aprobación firmada y doble verificación en servidor</td></tr>
+              <tr><td>Uso indebido o fuera de alcance del chat</td><td>Filtro de alcance previo y tope de longitud por mensaje</td></tr>
+              <tr><td>Privacidad del candidato</td><td>Consentimiento registrado; borrado en cascada de ejecuciones y propuestas</td></tr>
+              <tr><td>Costo descontrolado de IA</td><td>Interruptor por agente, límites diarios por persona y organización, reutilización de análisis sin cambios</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="text-muted cs-lead mb-0">
+          <strong class="text-white">Seguimiento del costo de la IA:</strong> cada ejecución registra agente, modelo,
+          tokens de entrada y salida, latencia y errores. Con precios configurables por millón de tokens, el panel
+          estima el costo por agente y por organización en ventanas de 7, 30 y 90 días, y puede alertar cuando una
+          organización supera un umbral diario.
+        </p>
+      </div>
+    </section>
+
+    <!-- ── CÓMO LO CONSTRUÍ ──────────────────────────────────── -->
+    <section class="py-5 section-light" aria-labelledby="t-proceso">
+      <div class="container">
+        <h2 id="t-proceso" class="display-6 fw-bold mb-4 section-heading" data-num="08">Cómo lo construí</h2>
+        <p class="fs-5 text-muted cs-lead mb-4">
+          Entregas pequeñas y frecuentes: cada capacidad salió como un PR independiente, de la base de datos a la
+          interfaz.
+        </p>
+        <ul class="cs-timeline">
+          <li><span class="cs-date">9 sep</span><p class="text-muted mt-1 mb-0">Fundamentos: sistema de diseño, estructura de la aplicación, esquema y RLS en Supabase.</p></li>
+          <li><span class="cs-date">9–27 sep</span><p class="text-muted mt-1 mb-0">Vacantes, candidatos, pipeline, propiedades personalizadas, roles y permisos, reportes, link público de postulación.</p></li>
+          <li><span class="cs-date">9 oct</span><p class="text-muted mt-1 mb-0">Primer agente (screening) sobre ejecución durable, consentimiento de privacidad y seguimiento global.</p></li>
+          <li><span class="cs-date">10–19 oct</span><p class="text-muted mt-1 mb-0">Octo (asistente), Pluma, Lupa, Radar como subagentes visibles; Faro; Ábaco y acceso por rol.</p></li>
+          <li><span class="cs-date">20 oct</span><p class="text-muted mt-1 mb-0">Costos por agente, análisis de producto y auditoría del asistente.</p></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ── APRENDIZAJES ──────────────────────────────────────── -->
+    <section class="py-5 section-dark" aria-labelledby="t-aprendi">
+      <div class="container">
+        <h2 id="t-aprendi" class="display-6 fw-bold mb-4 section-heading" data-num="09">Qué aprendí</h2>
+        <p class="fs-5 text-muted cs-lead mb-4">
+          Las mejores decisiones fueron las que recortaron autonomía, y las peores las que dejé sin medir.
+        </p>
+        <div class="row g-3 mb-5">
+          <div class="col-md-6"><div class="cs-card"><p class="text-white mb-2" style="font-weight:600">La explicabilidad es una función de producto, no un adorno.</p><p>Mostrar evidencia y brechas generó más confianza que subir la precisión del modelo.</p></div></div>
+          <div class="col-md-6"><div class="cs-card"><p class="text-white mb-2" style="font-weight:600">Separar evaluación y decisión simplificó todo.</p><p>Con el cálculo en código pude ajustar pesos y umbrales sin tocar prompts.</p></div></div>
+          <div class="col-md-6"><div class="cs-card"><p class="text-white mb-2" style="font-weight:600">Dar nombre y personalidad a los agentes ayudó a explicar el producto.</p><p>"Radar calcula el match" se entiende mejor que "módulo de scoring".</p></div></div>
+          <div class="col-md-6"><div class="cs-card"><p class="text-white mb-2" style="font-weight:600">El control de costos se construye desde el primer agente.</p><p>Reutilizar análisis y filtrar mensajes fuera de alcance ahorró llamadas desde el inicio.</p></div></div>
+        </div>
+
+        <h3 class="h5 fw-semibold mb-3">Qué haría distinto</h3>
+        <ul class="text-muted cs-lead mb-0">
+          <li><strong class="text-white">Pruebas automáticas y evaluaciones.</strong> Añadiría un banco de CVs y vacantes etiquetadas para medir regresiones cuando cambie un prompt o un modelo.</li>
+          <li><strong class="text-white">Validar con usuarios antes.</strong> Construí rápido con una hipótesis clara; las entrevistas sistemáticas debieron guiar la priorización de los agentes.</li>
+          <li><strong class="text-white">Pesos del match configurables.</strong> Hoy son fijos y calibrados para perfiles técnicos en inglés; es la limitación más importante para ampliar mercado.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ── RESULTADOS / MEDICIÓN ─────────────────────────────── -->
+    <section class="py-5 section-light" aria-labelledby="t-resultados">
+      <div class="container">
+        <h2 id="t-resultados" class="display-6 fw-bold mb-4 section-heading" data-num="10">Qué estoy midiendo</h2>
+        <p class="fs-5 text-muted cs-lead mb-4">
+          El producto está en piloto y aún no tengo cifras de impacto de negocio publicables. En lugar de inventarlas,
+          dejé el producto instrumentado para producirlas:
+        </p>
+        <ul class="text-muted cs-lead mb-0">
+          <li><strong class="text-white">Embudo</strong> con conversión y tiempo promedio por etapa.</li>
+          <li><strong class="text-white">Cumplimiento de plazos</strong> por vacante y por cliente.</li>
+          <li><strong class="text-white">Aprobación de propuestas de agentes</strong> (aprobadas vs. descartadas), que mide la calidad percibida de cada agente.</li>
+          <li><strong class="text-white">Trazas de cada llamada al modelo</strong> hacia PostHog, con costo, latencia y errores por agente.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ── HOJA DE RUTA ──────────────────────────────────────── -->
+    <section class="py-5 section-dark" aria-labelledby="t-roadmap">
+      <div class="container">
+        <h2 id="t-roadmap" class="display-6 fw-bold mb-4 section-heading" data-num="11">Hoja de ruta</h2>
+        <p class="fs-5 text-muted cs-lead mb-4">
+          Lo que sigue depende de lo que muestre el piloto; sin compromisos ni fechas.
+        </p>
+        <div class="row g-3">
+          <div class="col-md-4">
+            <div class="cs-nnl" style="border-color:#E8FF00">
+              <h3 class="text-accent">Ahora</h3>
+              <ul>
+                <li>Medir tiempo ahorrado en un piloto con 2–3 vacantes activas.</li>
+                <li>Banco de evaluaciones del match para cambiar de modelo sin regresiones.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="cs-nnl" style="border-color:#14b8a6">
+              <h3 class="text-teal">Después</h3>
+              <ul>
+                <li>Agentes de entrevistas y de comunicación con candidatos.</li>
+                <li>Correo, calendario y WhatsApp, donde ya trabajan los reclutadores.</li>
+                <li>Portal del cliente para ver sus vacantes y candidatos enviados.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="cs-nnl" style="border-color:#7952b3">
+              <h3 class="text-purple">Más adelante</h3>
+              <ul>
+                <li>Match en más idiomas y sectores, con pesos configurables.</li>
+                <li>Módulos de evaluación, onboarding y seguimiento de contratados.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── MI ROL ────────────────────────────────────────────── -->
+    <section class="py-5 section-light" aria-labelledby="t-rol">
+      <div class="container">
+        <h2 id="t-rol" class="display-6 fw-bold mb-4 section-heading" data-num="12">Mi rol</h2>
+        <p class="fs-5 text-muted cs-lead mb-4">
+          Responsable único de producto, diseño y código, de la hipótesis al despliegue.
+        </p>
+        <div class="cs-table-wrap">
+          <table class="cs-table">
+            <thead><tr><th>Área</th><th>Qué hice</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Producto</strong></td><td>Definición del problema, personas, alcance y hoja de ruta; presentación comercial</td></tr>
+              <tr><td><strong>Diseño</strong></td><td>Sistema de diseño, patrones de interfaz, identidad de los agentes</td></tr>
+              <tr><td><strong>Ingeniería</strong></td><td>Aplicación, base de datos, flujos de IA, observabilidad, seguridad</td></tr>
+              <tr><td><strong>Operación</strong></td><td>Despliegue, monitoreo de errores, seguimiento de costos</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CTA ───────────────────────────────────────────────── -->
+    <section class="py-5 section-dark text-center" aria-label="Llamada a la acción">
+      <div class="container py-3">
+        <h2 class="display-6 fw-bold mb-3">¿Quieres ver más de cerca?</h2>
+        <p class="text-muted lead mb-4">Puedo mostrarte una demo con datos ficticios y el código a petición.</p>
+        <a href="../index.html#contacto" class="btn btn-accent btn-lg px-5 me-2">
+          <i class="bi bi-send me-2" aria-hidden="true"></i>Contactarme
+        </a>
+        <a href="proyectos.html" class="btn btn-outline-light btn-lg px-5">
+          <i class="bi bi-arrow-left me-2" aria-hidden="true"></i>Volver a proyectos
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer-dark py-4 text-center" role="contentinfo">
+    <div class="container">
+      <nav class="footer-nav mb-3" aria-label="Links del footer">
+        <a href="sobre-mi.html">Sobre mí</a>
+        <a href="proyectos.html">Proyectos</a>
+        <a href="../index.html#contacto">Contacto</a>
+      </nav>
+      <p class="text-muted small mb-0">&copy; 2026 &middot; Coderhouse &middot; Todos los derechos reservados</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../js/main.js?v=20260810"></script>
+
+</body>
+</html>
