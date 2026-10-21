@@ -1,0 +1,196 @@
+@use '../abstracts/variables' as vars;
+@use '../abstracts/mixins' as mx;
+
+// ============================================================
+//   CARRUSEL «PUNTOS» (recurso de Moxen, moxen.cl/recursos/puntos)
+//   Pista deslizante + paginación «gusano» que se estira y se funde
+//   (filtro SVG #pt-funde). Lógica en js/vendor/puntos.js.
+//   Adaptado al tema: slides como cards de proyecto.
+// ============================================================
+
+.pt-carrusel {
+  // tokens del efecto (los lee puntos.js vía --pt-largo)
+  --pt-punto: #4a4a44;              // punto en reposo (sólido: la transparencia rompe el filtro)
+  --pt-activo: #{vars.$color-accent};
+  --pt-tam: 11px;                   // diámetro del punto en reposo
+  --pt-sep: 34px;                   // de centro a centro
+  --pt-largo: 42px;                 // largo de la píldora activa
+
+  // full-bleed: el carrusel ocupa todo el ancho del viewport y recorta recién
+  // en el borde de la pantalla, no en un contenedor interno
+  width: 100vw;
+  max-width: 100vw;
+  margin-inline: calc(50% - 50vw);
+  overflow: hidden;                // recorta las tarjetas vecinas en el borde de la pantalla
+  padding-block: 10px 16px;
+}
+
+// ── la ventana y la pista ──────────────────────────────────────────
+// El visor tiene el ancho de la tarjeta activa y va centrado; deja DESBORDAR
+// las tarjetas vecinas, que asoman a los lados hasta el borde de la pantalla.
+.pt-visor {
+  position: relative;
+  width: min(1100px, 74vw);
+  margin-inline: auto;
+  overflow: visible;               // las vecinas asoman; el recorte lo hace .pt-carrusel
+  touch-action: pan-y;             // los deslizamientos horizontales los maneja el JS
+}
+
+.pt-pista {
+  display: flex;
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pt-pista { transition: none; }
+}
+
+// ── cada diapositiva ocupa el 100 %; el margen deja la tarjeta despegada ─
+.pt-diapo {
+  flex: 0 0 100%;
+  display: flex;
+  padding-inline: clamp(10px, 2.4vw, 28px);   // margen lateral: la tarjeta no toca el borde
+}
+
+// ── la tarjeta de proyecto propiamente dicha ───────────────────────
+.pt-tarjeta {
+  position: relative;
+  flex: 1;
+  min-height: clamp(360px, 56vh, 460px);
+  display: flex;
+  align-items: center;
+  border-radius: 20px;
+  overflow: hidden;
+  isolation: isolate;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  // spread negativo: la sombra no se extiende a los lados, así el visor no la corta
+  box-shadow: 0 20px 44px -16px rgba(0, 0, 0, 0.75);
+
+  // imagen de fondo, enfocada hacia la derecha (igual que las cards)
+  background-image: var(--card-img);
+  background-size: cover;
+  background-position: right center;
+  background-repeat: no-repeat;
+  background-color: vars.$color-bg-dark;
+
+  // degradado para legibilidad: oscuro a la izquierda → transparente a la derecha
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: linear-gradient(
+      100deg,
+      rgba(vars.$color-bg-dark, 0.96) 0%,
+      rgba(vars.$color-bg-dark, 0.84) 40%,
+      rgba(vars.$color-bg-dark, 0.38) 70%,
+      rgba(vars.$color-bg-dark, 0.08) 100%
+    );
+  }
+
+  // el contenido reutiliza las clases .stack-card__* ya definidas
+  .stack-card__content { position: relative; z-index: 1; }
+}
+
+// CTA como enlace real (en el carrusel la diapo no es un enlace completo,
+// para no chocar con el deslizamiento táctil)
+a.stack-card__cta {
+  text-decoration: none;
+  transition: gap 0.25s vars.$ease, color 0.25s vars.$ease;
+
+  &:hover,
+  &:focus-visible {
+    color: vars.$color-accent-dark;
+    gap: 0.7rem;
+  }
+  i { transition: transform 0.25s vars.$ease; }
+  &:hover i,
+  &:focus-visible i { transform: translateX(5px); }
+}
+
+// ── controles: flechas + puntos ───────────────────────────────────
+.pt-control {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.4rem;
+  margin-top: 1.75rem;
+}
+
+.pt-flecha {
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: none;
+  color: vars.$color-text-light;
+  cursor: pointer;
+  @include mx.transition(border-color, color, transform);
+
+  &:hover {
+    border-color: vars.$color-accent;
+    color: vars.$color-accent;
+  }
+  &:active { transform: scale(0.92); }
+  &:focus-visible {
+    outline: 2px solid vars.$color-accent;
+    outline-offset: 3px;
+  }
+  svg {
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+}
+
+// la paginación: los puntos se funden gracias al filtro SVG #pt-funde
+.pt-puntos {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: calc(var(--pt-sep) - var(--pt-tam));
+  height: 36px;
+  padding: 0 calc(var(--pt-largo) / 2 - var(--pt-tam) / 2);
+  filter: url(#pt-funde);
+}
+
+.pt-punto {
+  position: relative;
+  flex: none;
+  width: var(--pt-tam);
+  height: var(--pt-tam);
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--pt-punto);
+  cursor: pointer;
+
+  // área de toque mayor que el punto visible
+  &::after {
+    content: '';
+    position: absolute;
+    inset: -12px -10px;
+  }
+  &:focus-visible {
+    outline: none;
+    background: #8a8a82;
+  }
+}
+
+.pt-gusano {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  height: 16px;
+  border-radius: 99px;
+  pointer-events: none;
+  background: var(--pt-activo);
+  will-change: transform, width;
+}

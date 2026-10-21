@@ -44,3 +44,23 @@
   margin-right: 0.35rem;
   font-size: 0.7rem;
 }
+
+// Subrayado elástico del navbar (adaptado del recurso «Subrayado» de Moxen).
+// main.js mueve cada extremo de la raya con un resorte; aquí sólo su aspecto.
+#navMenu .navbar-nav {
+  position: relative;
+}
+
+.nav-raya {
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  height: 2px;
+  width: 0;
+  border-radius: 2px;
+  background: vars.$color-accent;
+  opacity: 0;
+  pointer-events: none;
+  will-change: transform, width;
+  box-shadow: 0 0 8px rgba(vars.$color-accent, 0.6);
+}

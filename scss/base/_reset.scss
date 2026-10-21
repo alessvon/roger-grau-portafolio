@@ -12,6 +12,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: clip; // el carrusel full-bleed (100vw) no debe generar scroll horizontal
 }
 
 body {
@@ -20,6 +21,7 @@ body {
   line-height: 1.7;
   background-color: vars.$color-bg-dark;
   color: vars.$color-text-light;
+  overflow-x: clip; // evita el scroll horizontal del carrusel full-bleed (100vw + scrollbar)
 }
 
 // Offset para navbar fijo al hacer scroll a secciones
