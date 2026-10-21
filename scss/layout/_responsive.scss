@@ -32,6 +32,46 @@
     min-height: 50vh;
   }
 
+  // El título del caso de estudio (p. ej. "Contratacion.pro", una sola
+  // palabra larga) entra en una línea en vez de partirse a mitad de palabra.
+  .page-hero h1 {
+    font-size: clamp(1.5rem, 6.4vw, 2.3rem);
+  }
+
+  // ── Carrusel de proyectos ──────────────────────────────────
+  // En móvil el "peek" de las tarjetas vecinas deja la tarjeta activa
+  // demasiado angosta: se ensancha el visor y se reduce el asomo lateral.
+  .pt-visor {
+    width: min(1100px, 90vw);
+  }
+
+  .pt-diapo {
+    padding-inline: 6px;
+  }
+
+  // Más aire interno proporcional al ancho reducido y título que entra sin recortes.
+  .pt-tarjeta .stack-card__content {
+    width: 100%;
+    padding: 1.5rem 1.35rem;
+  }
+
+  .pt-tarjeta .stack-card__title {
+    font-size: 1.6rem;
+  }
+
+  .pt-tarjeta .stack-card__desc {
+    font-size: 0.9rem;
+  }
+
+  // ── Texto de introducción / lead ───────────────────────────
+  // El monospace a 1.25rem de borde a borde se siente pesado en móvil.
+  .lead,
+  .cs-lead,
+  .cs-lead.fs-5 {
+    font-size: 1.02rem;
+    line-height: 1.6;
+  }
+
   .avatar-img,
   .avatar-emoji-fallback {
     width: 160px;

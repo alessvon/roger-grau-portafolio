@@ -33,8 +33,11 @@
 @use 'layout/header';
 @use 'layout/footer';
 @use 'layout/grid';
-@use 'layout/responsive';
 
 // 5. Páginas
 @use 'pages/home';
 @use 'pages/projects';
+
+// 6. Responsive — se importa al final para que sus overrides móviles
+//    ganen en el cascade frente a componentes y páginas de igual especificidad
+@use 'layout/responsive';
