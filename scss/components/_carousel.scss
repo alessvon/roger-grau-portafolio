@@ -49,6 +49,8 @@
 // ── cada diapositiva ocupa el 100 %; el margen deja la tarjeta despegada ─
 .pt-diapo {
   flex: 0 0 100%;
+  min-width: 0;                                // sin esto, el contenido ancho (título sin cortar)
+                                               // infla la diapo más allá del visor y se recorta
   display: flex;
   padding-inline: clamp(10px, 2.4vw, 28px);   // margen lateral: la tarjeta no toca el borde
 }

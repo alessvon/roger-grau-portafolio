@@ -10,6 +10,9 @@ h1, h2, h3,
   font-family: vars.$font-display;
   font-weight: 800 !important;
   text-wrap: balance;
+  // Las palabras largas sin espacios (p. ej. "Contratacion.pro") deben
+  // romper antes que desbordar y recortarse en pantallas estrechas.
+  overflow-wrap: break-word;
 }
 
 // Tipografía fluida con clamp()
