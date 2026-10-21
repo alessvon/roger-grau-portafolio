@@ -34,30 +34,7 @@ document.querySelectorAll('#navMenu .nav-link').forEach(link => {
   });
 });
 
-/* ── 3. Formulario de contacto ──────────────────────────── */
-const form = document.querySelector('.contact-form');
-
-if (form) {
-  form.addEventListener('submit', e => {
-    e.preventDefault();
-
-    const btn = form.querySelector('button[type="submit"]');
-    const originalText = btn.innerHTML;
-
-    btn.innerHTML = '<i class="bi bi-check-circle me-2"></i>¡Mensaje enviado!';
-    btn.classList.replace('btn-accent', 'btn-success');
-    btn.disabled = true;
-
-    setTimeout(() => {
-      btn.innerHTML = originalText;
-      btn.classList.replace('btn-success', 'btn-accent');
-      btn.disabled = false;
-      form.reset();
-    }, 3000);
-  });
-}
-
-/* ── 4. Animación fade-in con IntersectionObserver ───────── */
+/* ── 3. Animación fade-in con IntersectionObserver ───────── */
 const fadeEls = document.querySelectorAll(
   '.skill-card, .project-card, .contact-info, .contact-form, .avatar-img, .quick-facts'
 );
@@ -459,37 +436,98 @@ if (meshCanvas && meshCanvas.getContext) {
 }
 
 
-/* ── 6. Filtros de proyectos (página proyectos.html) ─────── */
-const filterBtns = document.querySelectorAll('.btn-filter');
-const projectItems = document.querySelectorAll('.project-item');
+/* ── 6. Hero: título que se «descifra» (recurso Revuelto de Moxen) ─ */
+/* Cada letra pasa por otros alfabetos y cae en su sitio al cargar.    */
+const heroTitle = document.getElementById('hero-title');
+if (heroTitle && window.Revuelto) {
+  const texto = heroTitle.textContent.trim();
+  window.addEventListener('load', () => {
+    setTimeout(() => window.Revuelto.cambia(heroTitle, texto, { dura: 1100 }), 180);
+  });
+}
 
-if (filterBtns.length > 0) {
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      /* Actualiza botón activo */
-      filterBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
 
-      const filter = btn.dataset.filter;
+/* ── 8. Navbar: subrayado elástico que sigue al cursor ───────────── */
+/* Adaptado del recurso «Subrayado» de Moxen (moxen.cl/recursos/        */
+/* subrayado): dos resortes mueven cada extremo de la raya, así se      */
+/* estira al viajar entre links y se encoge al llegar. Aquí lo guía el  */
+/* hover (no una pestaña activa) y se retrae al salir del menú.         */
+(function () {
+  const lista = document.querySelector('#navMenu .navbar-nav');
+  if (!lista) return;
+  const soporta = window.matchMedia('(min-width: 992px) and (hover: hover)');
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const links = Array.from(lista.querySelectorAll('.nav-link'));
+  if (!links.length) return;
 
-      projectItems.forEach(item => {
-        const category = item.dataset.category || '';
-        const matches = filter === 'all' || category.includes(filter);
+  const raya = document.createElement('span');
+  raya.className = 'nav-raya';
+  raya.setAttribute('aria-hidden', 'true');
+  lista.appendChild(raya);
 
-        /* Aplica transición de visibilidad */
-        if (matches) {
-          item.style.display = '';
-          item.style.opacity = '0';
-          requestAnimationFrame(() => {
-            item.style.transition = 'opacity 0.3s ease';
-            item.style.opacity = '1';
-          });
-        } else {
-          item.style.transition = 'opacity 0.2s ease';
-          item.style.opacity = '0';
-          setTimeout(() => { item.style.display = 'none'; }, 200);
-        }
+  // cada extremo: posición, velocidad, destino y rigidez (delante tira, detrás arrastra)
+  const DELANTE = 340, DETRAS = 110, FRENO = 1.45;
+  const izq = { x: 0, v: 0, meta: 0, k: DELANTE }, der = { x: 0, v: 0, meta: 0, k: DELANTE };
+  let visible = false, raf = 0, ultimo = null;
+
+  function bordes(el) {
+    const l = lista.getBoundingClientRect(), r = el.getBoundingClientRect();
+    return [r.left - l.left, r.right - l.left];
+  }
+  function pinta() {
+    raya.style.transform = 'translateX(' + izq.x.toFixed(2) + 'px)';
+    raya.style.width = Math.max(0, der.x - izq.x).toFixed(2) + 'px';
+    raya.style.opacity = visible ? '1' : '0';
+  }
+  function paso(ts) {
+    if (ultimo === null) ultimo = ts;
+    let dt = Math.min(.05, (ts - ultimo) / 1000);
+    ultimo = ts;
+    for (; dt > 0; dt -= 1 / 240) {
+      const h = Math.min(dt, 1 / 240);
+      [izq, der].forEach(e => {
+        e.v += (-e.k * (e.x - e.meta) - FRENO * Math.sqrt(e.k) * e.v) * h;
+        e.x += e.v * h;
       });
-    });
+    }
+    pinta();
+    const quieto = [izq, der].every(e => Math.abs(e.x - e.meta) < .1 && Math.abs(e.v) < .1);
+    if (quieto) { izq.x = izq.meta; der.x = der.meta; izq.v = der.v = 0; pinta(); raf = 0; ultimo = null; return; }
+    raf = requestAnimationFrame(paso);
+  }
+  function anima() { if (!raf) raf = requestAnimationFrame(paso); }
+
+  function va(el) {
+    const [l, r] = bordes(el);
+    const derecha = l >= der.meta;            // ¿viaja hacia la derecha?
+    if (!visible) { izq.x = der.x = (l + r) / 2; }  // nace en el centro del link
+    izq.meta = l; der.meta = r;
+    visible = true;
+    if (reduce) { izq.x = l; der.x = r; return pinta(); }
+    der.k = derecha ? DELANTE : DETRAS;
+    izq.k = derecha ? DETRAS : DELANTE;
+    anima();
+  }
+  function esconde() {
+    const centro = (izq.meta + der.meta) / 2;
+    izq.meta = der.meta = centro;             // los dos extremos se juntan y desaparece
+    visible = false;
+    if (reduce) return pinta();
+    izq.k = der.k = DELANTE;
+    anima();
+  }
+
+  links.forEach(a => a.addEventListener('pointerenter', () => { if (soporta.matches) va(a); }));
+  lista.addEventListener('pointerleave', () => { if (soporta.matches) esconde(); });
+  window.addEventListener('resize', () => { if (visible) pinta(); });
+})();
+
+
+/* ── 9. Carrusel de proyectos (recurso «Puntos» de Moxen) ────────── */
+/* Reemplaza el stack vertical: una card a la vez, con paginación       */
+/* «gusano», flechas y swipe. La lógica vive en vendor/puntos.js.       */
+if (window.Puntos) {
+  document.querySelectorAll('[data-puntos-raiz]').forEach(raiz => {
+    window.Puntos(raiz);
   });
 }

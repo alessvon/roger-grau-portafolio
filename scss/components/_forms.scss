@@ -33,3 +33,39 @@
   @include mx.mono-label(0.78rem, 1px);
   color: rgba(vars.$color-text-light, 0.6);
 }
+
+// ── Panel de contacto por WhatsApp (reemplaza al formulario) ────────
+.whatsapp-cta {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 1rem;
+  padding: clamp(1.75rem, 4vw, 3rem);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid vars.$color-border-light;
+  border-radius: vars.$radius-md;
+}
+
+.whatsapp-cta__icon {
+  font-size: 2.6rem;
+  line-height: 1;
+  color: #25d366; // verde de WhatsApp, para reconocerlo al instante
+}
+
+.whatsapp-cta__title {
+  margin: 0;
+  font-family: vars.$font-display;
+  font-weight: 800;
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  color: vars.$color-text-light;
+}
+
+.whatsapp-cta__desc {
+  margin: 0 0 0.5rem;
+  max-width: 44ch;
+  color: rgba(vars.$color-text-light, 0.7);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}

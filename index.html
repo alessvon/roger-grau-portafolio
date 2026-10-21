@@ -40,7 +40,7 @@
   <!-- Google Fonts: Syne + IBM Plex Mono + Libre Baskerville -->
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=IBM+Plex+Mono:wght@400;500&family=Libre+Baskerville&display=swap" rel="stylesheet" />
   <!-- Estilos personalizados -->
-  <link rel="stylesheet" href="css/style.css?v=20260810" />
+  <link rel="stylesheet" href="css/style.css?v=20261020" />
 </head>
 
 <body>
@@ -75,7 +75,7 @@
         <div class="collapse navbar-collapse" id="navMenu">
           <ul class="navbar-nav ms-auto gap-2">
             <li class="nav-item"><a class="nav-link" href="pages/sobre-mi.html"><span class="nav-num">01</span> Sobre mí</a></li>
-            <li class="nav-item"><a class="nav-link" href="pages/proyectos.html"><span class="nav-num">02</span> Proyectos</a></li>
+            <li class="nav-item"><a class="nav-link" href="#proyectos"><span class="nav-num">02</span> Proyectos</a></li>
             <li class="nav-item"><a class="nav-link" href="#contacto"><span class="nav-num">03</span> Contacto</a></li>
           </ul>
         </div>
@@ -92,13 +92,13 @@
     <!-- ── HERO ─────────────────────────────────────────────── -->
     <section id="hero" class="d-flex align-items-center min-vh-100" aria-label="Presentación">
       <div class="container text-center text-white">
-        <h1 class="display-2 fw-bold mb-3 hero-animate hero-animate--delay-1">Roger Grau</h1>
+        <h1 id="hero-title" class="display-2 fw-bold mb-3 hero-animate hero-animate--delay-1">Roger Grau</h1>
         <p class="hero-subtitle fw-light mb-4 hero-animate hero-animate--delay-2">Product Engineer</p>
         <p class="lead mb-5 mx-auto hero-desc hero-animate hero-animate--delay-3">
           Diseño y construyo productos digitales que conectan la visión de negocio con experiencias de usuario excepcionales.
         </p>
         <div class="d-flex justify-content-center gap-3 flex-wrap hero-animate hero-animate--delay-4">
-          <a href="pages/proyectos.html" class="btn btn-accent btn-accent--pulse btn-lg px-4">Ver proyectos</a>
+          <a href="#proyectos" class="btn btn-accent btn-accent--pulse btn-lg px-4">Ver proyectos</a>
           <a href="https://wa.me/525642052544" class="btn btn-outline-light btn-lg px-4" target="_blank" rel="noopener">
             <i class="bi bi-whatsapp me-2" aria-hidden="true"></i>Contactarme
           </a>
@@ -115,59 +115,81 @@
           <p class="text-muted mt-2">Una selección de mis mejores trabajos.</p>
         </div>
 
-        <!-- Cards apiladas al hacer scroll (sticky stacking) -->
-        <div class="stack">
+        <!-- Filtro SVG que funde los puntos de la paginación (recurso «Puntos» de Moxen) -->
+        <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+          <filter id="pt-funde" x="-20%" y="-80%" width="140%" height="260%">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="borroso" />
+            <feColorMatrix in="borroso" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 22 -9" result="gota" />
+            <feComposite in="SourceGraphic" in2="gota" operator="atop" />
+          </filter>
+        </svg>
 
-          <!-- Proyecto 1 -->
-          <a class="stack-card" href="pages/proyecto-contratacion-pro.html" style="--card-img: url('img/projects/contratacion-pro.svg')" aria-label="Ver proyecto Contratacion.pro">
-            <div class="stack-card__content">
-              <span class="stack-card__num">01</span>
-              <h3 class="stack-card__title">Contratacion.pro</h3>
-              <p class="stack-card__desc">ATS multiempresa con ocho agentes de IA que leen CVs, puntúan candidatos con evidencia y vigilan plazos. La IA propone, la persona decide.</p>
-              <ul class="stack-card__tech list-unstyled">
-                <li><span class="glass-chip">Next.js</span></li>
-                <li><span class="glass-chip">Supabase</span></li>
-                <li><span class="glass-chip">IA</span></li>
-              </ul>
-              <span class="stack-card__cta">Ver proyecto <i class="bi bi-arrow-right" aria-hidden="true"></i></span>
+        <!-- Carrusel «Puntos»: una card de proyecto a la vez; puntos.js crea los puntos -->
+        <div class="pt-carrusel" data-puntos-raiz aria-roledescription="carrusel" aria-label="Proyectos destacados">
+          <div class="pt-visor" data-puntos-visor>
+            <div class="pt-pista" data-puntos-pista>
+
+              <!-- Proyecto 1 -->
+              <article class="pt-diapo" style="--card-img: url('img/projects/contratacion-pro.svg')" aria-roledescription="diapositiva" aria-label="1 de 3">
+                <div class="pt-tarjeta">
+                <div class="stack-card__content">
+                  <span class="stack-card__num">01</span>
+                  <h3 class="stack-card__title">Contratacion.pro</h3>
+                  <p class="stack-card__desc">ATS multiempresa con ocho agentes de IA que leen CVs, puntúan candidatos con evidencia y vigilan plazos. La IA propone, la persona decide.</p>
+                  <ul class="stack-card__tech list-unstyled">
+                    <li><span class="glass-chip">Next.js</span></li>
+                    <li><span class="glass-chip">Supabase</span></li>
+                    <li><span class="glass-chip">IA</span></li>
+                  </ul>
+                  <a class="stack-card__cta" href="pages/proyecto-contratacion-pro.html">Ver proyecto <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+                </div>
+                </div>
+              </article>
+
+              <!-- Proyecto 2 -->
+              <article class="pt-diapo" style="--card-img: url('img/projects/corus.svg')" aria-roledescription="diapositiva" aria-label="2 de 3">
+                <div class="pt-tarjeta">
+                <div class="stack-card__content">
+                  <span class="stack-card__num">02</span>
+                  <h3 class="stack-card__title">Corus</h3>
+                  <p class="stack-card__desc">Plataforma LMS multi-tenant de itinerarios de aprendizaje: las organizaciones diseñan rutas, inscriben a su gente y siguen su avance.</p>
+                  <ul class="stack-card__tech list-unstyled">
+                    <li><span class="glass-chip">Next.js</span></li>
+                    <li><span class="glass-chip">Postgres · RLS</span></li>
+                  </ul>
+                  <a class="stack-card__cta" href="pages/proyecto-corus.html">Ver proyecto <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+                </div>
+                </div>
+              </article>
+
+              <!-- Proyecto 3 -->
+              <article class="pt-diapo" style="--card-img: url('img/projects/nudge-sludge.svg')" aria-roledescription="diapositiva" aria-label="3 de 3">
+                <div class="pt-tarjeta">
+                <div class="stack-card__content">
+                  <span class="stack-card__num">03</span>
+                  <h3 class="stack-card__title">Nudge o Sludge</h3>
+                  <p class="stack-card__desc">Juego de cartas para aprender economía del comportamiento: la misma palanca puede ser acierto o trampa según el contexto.</p>
+                  <ul class="stack-card__tech list-unstyled">
+                    <li><span class="glass-chip">React</span></li>
+                    <li><span class="glass-chip">TypeScript</span></li>
+                  </ul>
+                  <a class="stack-card__cta" href="pages/proyecto-nudge-sludge.html">Ver proyecto <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+                </div>
+                </div>
+              </article>
+
             </div>
-          </a>
+          </div>
 
-          <!-- Proyecto 2 -->
-          <a class="stack-card" href="pages/proyecto-corus.html" style="--card-img: url('img/projects/corus.svg')" aria-label="Ver proyecto Corus">
-            <div class="stack-card__content">
-              <span class="stack-card__num">02</span>
-              <h3 class="stack-card__title">Corus</h3>
-              <p class="stack-card__desc">Plataforma LMS multi-tenant de itinerarios de aprendizaje: las organizaciones diseñan rutas, inscriben a su gente y siguen su avance.</p>
-              <ul class="stack-card__tech list-unstyled">
-                <li><span class="glass-chip">Next.js</span></li>
-                <li><span class="glass-chip">Postgres · RLS</span></li>
-              </ul>
-              <span class="stack-card__cta">Ver proyecto <i class="bi bi-arrow-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-          <!-- Proyecto 3 -->
-          <a class="stack-card" href="pages/proyecto-nudge-sludge.html" style="--card-img: url('img/projects/nudge-sludge.svg')" aria-label="Ver proyecto Nudge o Sludge">
-            <div class="stack-card__content">
-              <span class="stack-card__num">03</span>
-              <h3 class="stack-card__title">Nudge o Sludge</h3>
-              <p class="stack-card__desc">Juego de cartas para aprender economía del comportamiento: la misma palanca puede ser acierto o trampa según el contexto.</p>
-              <ul class="stack-card__tech list-unstyled">
-                <li><span class="glass-chip">React</span></li>
-                <li><span class="glass-chip">TypeScript</span></li>
-              </ul>
-              <span class="stack-card__cta">Ver proyecto <i class="bi bi-arrow-right" aria-hidden="true"></i></span>
-            </div>
-          </a>
-
-        </div>
-
-        <!-- CTA para ver todos los proyectos -->
-        <div class="text-center mt-5">
-          <a href="pages/proyectos.html" class="btn btn-accent btn-lg px-5">
-            <i class="bi bi-grid-3x3-gap me-2" aria-hidden="true"></i>Ver todos los proyectos
-          </a>
+          <div class="pt-control">
+            <button class="pt-flecha" type="button" data-puntos-ant aria-label="Proyecto anterior">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 6l-6 6 6 6" /></svg>
+            </button>
+            <div class="pt-puntos" data-puntos></div>
+            <button class="pt-flecha" type="button" data-puntos-sig aria-label="Proyecto siguiente">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 6l6 6-6 6" /></svg>
+            </button>
+          </div>
         </div>
 
       </div>
@@ -198,10 +220,6 @@
                   <a href="https://www.linkedin.com/in/roger-aless/" target="_blank" rel="noopener">linkedin.com/in/roger-aless</a>
                 </li>
                 <li class="contact-item">
-                  <i class="bi bi-github contact-icon" aria-hidden="true"></i>
-                  <a href="https://github.com/alessvon" target="_blank" rel="noopener">github.com/alessvon</a>
-                </li>
-                <li class="contact-item">
                   <i class="bi bi-geo-alt-fill contact-icon" aria-hidden="true"></i>
                   <span>CDMX, México</span>
                 </li>
@@ -209,54 +227,23 @@
             </address>
           </div>
 
-          <!-- Formulario -->
+          <!-- Contacto directo por WhatsApp -->
           <div class="col-lg-7">
-            <form class="contact-form" aria-labelledby="titulo-contacto" novalidate>
-              <div class="mb-3">
-                <label for="nombre" class="form-label fw-semibold">Nombre</label>
-                <input
-                  type="text"
-                  id="nombre"
-                  name="nombre"
-                  class="form-control custom-input"
-                  placeholder="Tu nombre completo…"
-                  autocomplete="name"
-                  spellcheck="false"
-                  required
-                />
-              </div>
-              <div class="mb-3">
-                <label for="email" class="form-label fw-semibold">Email</label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  class="form-control custom-input"
-                  placeholder="tu@email.com"
-                  autocomplete="email"
-                  inputmode="email"
-                  spellcheck="false"
-                  required
-                />
-              </div>
-              <div class="mb-4">
-                <label for="mensaje" class="form-label fw-semibold">Mensaje</label>
-                <textarea
-                  id="mensaje"
-                  name="mensaje"
-                  class="form-control custom-input"
-                  rows="5"
-                  placeholder="Contame sobre tu proyecto&#8230;"
-                  autocomplete="off"
-                  required
-                ></textarea>
-              </div>
-              <div class="text-center">
-                <button type="submit" class="btn btn-accent btn-lg px-5">
-                  <i class="bi bi-send me-2" aria-hidden="true"></i>Enviar mensaje
-                </button>
-              </div>
-            </form>
+            <div class="whatsapp-cta">
+              <i class="bi bi-whatsapp whatsapp-cta__icon" aria-hidden="true"></i>
+              <h3 class="whatsapp-cta__title">Hablemos por WhatsApp</h3>
+              <p class="whatsapp-cta__desc">
+                La forma más rápida de contactarme. Cuéntame tu idea o proyecto y te respondo lo antes posible.
+              </p>
+              <a
+                href="https://wa.me/525642052544?text=Hola%20Roger%2C%20vi%20tu%20portfolio%20y%20me%20gustar%C3%ADa%20conversar%20sobre%20un%20proyecto."
+                class="btn btn-accent btn-lg px-5"
+                target="_blank"
+                rel="noopener"
+              >
+                <i class="bi bi-whatsapp me-2" aria-hidden="true"></i>Contactar por WhatsApp
+              </a>
+            </div>
           </div>
 
         </div>
@@ -273,7 +260,7 @@
     <div class="container">
       <nav class="footer-nav mb-3" aria-label="Links del footer">
         <a href="pages/sobre-mi.html">Sobre mí</a>
-        <a href="pages/proyectos.html">Proyectos</a>
+        <a href="#proyectos">Proyectos</a>
         <a href="#contacto">Contacto</a>
       </nav>
       <p class="mb-1 text-muted">
@@ -288,8 +275,11 @@
 
   <!-- Bootstrap Bundle JS (incluye Popper) -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Recursos de animación de Moxen (moxen.cl/recursos) -->
+  <script src="js/vendor/revuelto.js?v=20261020" defer></script>
+  <script src="js/vendor/puntos.js?v=20261020" defer></script>
   <!-- Script principal -->
-  <script src="js/main.js?v=20260810" defer></script>
+  <script src="js/main.js?v=20261020" defer></script>
 
 </body>
 </html>

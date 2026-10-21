@@ -6,8 +6,9 @@ Portfolio de Roger Grau, Product Engineer. Proyecto Preentrega 3 — Coderhouse 
 
 | Archivo | Descripción |
 |---|---|
-| `index.html` | Página principal: Hero, Sobre mí, Habilidades, Proyectos destacados, Contacto |
-| `proyectos.html` | Grilla completa de proyectos con filtros por tecnología |
+| `index.html` | Página principal: Hero, Proyectos destacados (carrusel), Contacto |
+| `pages/sobre-mi.html` | Perfil y trayectoria |
+| `pages/proyecto-*.html` | Páginas de detalle de cada proyecto |
 
 ## Tecnologías
 
@@ -79,7 +80,7 @@ npm run sass:prod
 ```
 /
   index.html
-  proyectos.html
+  pages/              ← sobre-mí y detalles de proyecto
   css/
     style.css          ← compilado automático (no editar)
   scss/                ← fuente SCSS
@@ -108,6 +109,14 @@ No requiere servidor. Abrir `index.html` directamente en el navegador.
 ## GitHub Pages
 
 El sitio está disponible en: `https://alessvon.github.io/coderhouse-proyecto`
+
+## Créditos
+
+Algunas animaciones provienen de los recursos gratuitos de **Moxen** ([moxen.cl/recursos](https://moxen.cl/recursos.html)), usados bajo su licencia (libres para proyectos propios y de clientes; no se revenden ni se republican como recursos propios):
+
+- **Revuelto** — título del hero que se «descifra» pasando por otros alfabetos (`js/vendor/revuelto.js`).
+- **Puntos** — carrusel de proyectos (home y página de proyectos): las tarjetas se desplazan enteras y la paginación es un «gusano» que se estira y se funde con un filtro SVG (`js/vendor/puntos.js`, `scss/components/_carousel.scss`).
+- **Subrayado** — base del subrayado elástico del navbar, adaptado a hover en `js/main.js`.
 
 ---
 
