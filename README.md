@@ -97,8 +97,8 @@ npm run sass:prod
 
 ```bash
 # Clonar y abrir
-git clone https://github.com/alessvon/coderhouse-proyecto
-cd coderhouse-proyecto
+git clone https://github.com/alessvon/roger-grau-portafolio
+cd roger-grau-portafolio
 npm install
 npm run sass:watch
 # Abrir index.html en el navegador
@@ -108,7 +108,7 @@ No requiere servidor. Abrir `index.html` directamente en el navegador.
 
 ## GitHub Pages
 
-El sitio está disponible en: `https://alessvon.github.io/coderhouse-proyecto`
+El sitio está disponible en: `https://alessvon.github.io/roger-grau-portafolio`
 
 ## Créditos
 
