@@ -1066,6 +1066,32 @@ a.stack-card__cta:hover i, a.stack-card__cta:focus-visible i {
   z-index: 1;
 }
 
+.cs-page .section-light,
+.cs-page .section-dark {
+  position: relative;
+}
+.cs-page .section-light::before,
+.cs-page .section-dark::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent 0%, rgba(12, 12, 12, 0.66) 10%, rgba(12, 12, 12, 0.66) 90%, transparent 100%);
+}
+.cs-page .section-light > .container,
+.cs-page .section-dark > .container {
+  position: relative;
+  z-index: 1;
+}
+.cs-page .section-light .text-muted,
+.cs-page .section-dark .text-muted {
+  color: #c9c6be !important;
+}
+.cs-page .cs-lead {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.55);
+}
+
 @media (max-width: 991.98px) {
   .avatar-img {
     width: 200px;
