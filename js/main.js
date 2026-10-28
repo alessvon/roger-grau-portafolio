@@ -442,7 +442,20 @@ const heroTitle = document.getElementById('hero-title');
 if (heroTitle && window.Revuelto) {
   const texto = heroTitle.textContent.trim();
   window.addEventListener('load', () => {
-    setTimeout(() => window.Revuelto.cambia(heroTitle, texto, { dura: 1100 }), 180);
+    setTimeout(() => {
+      // Los glifos de otros alfabetos (hebreo, chino) usan fuentes de reserva
+      // más altas y cambiarían la altura del <h1>, empujando el subtítulo.
+      // Fijamos la altura y evitamos el salto de línea mientras dura el efecto.
+      const alto = heroTitle.offsetHeight;
+      heroTitle.style.height = alto + 'px';
+      heroTitle.style.whiteSpace = 'nowrap';
+      heroTitle.style.overflow = 'hidden';
+      window.Revuelto.cambia(heroTitle, texto, { dura: 1100 }).then(() => {
+        heroTitle.style.height = '';
+        heroTitle.style.whiteSpace = '';
+        heroTitle.style.overflow = '';
+      });
+    }, 180);
   });
 }
 
