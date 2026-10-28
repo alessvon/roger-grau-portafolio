@@ -440,23 +440,29 @@ if (meshCanvas && meshCanvas.getContext) {
 /* Cada letra pasa por otros alfabetos y cae en su sitio al cargar.    */
 const heroTitle = document.getElementById('hero-title');
 if (heroTitle && window.Revuelto) {
-  const texto = heroTitle.textContent.trim();
-  window.addEventListener('load', () => {
-    setTimeout(() => {
-      // Los glifos de otros alfabetos (hebreo, chino) usan fuentes de reserva
-      // más altas y cambiarían la altura del <h1>, empujando el subtítulo.
-      // Fijamos la altura y evitamos el salto de línea mientras dura el efecto.
-      const alto = heroTitle.offsetHeight;
-      heroTitle.style.height = alto + 'px';
-      heroTitle.style.whiteSpace = 'nowrap';
-      heroTitle.style.overflow = 'hidden';
-      window.Revuelto.cambia(heroTitle, texto, { dura: 1100 }).then(() => {
-        heroTitle.style.height = '';
-        heroTitle.style.whiteSpace = '';
-        heroTitle.style.overflow = '';
-      });
-    }, 180);
-  });
+  const lineas = Array.from(heroTitle.querySelectorAll('.hero-title-line'));
+  if (lineas.length) {
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        // Cada palabra («Roger», «Grau») se descifra por separado con la misma
+        // animación. Los glifos de otros alfabetos (hebreo, chino) usan fuentes
+        // de reserva más altas, así que fijamos la altura de cada línea y
+        // evitamos el salto de palabra mientras dura el efecto: así ninguna
+        // línea reflúye a la de abajo ni al subtítulo.
+        lineas.forEach(linea => {
+          const texto = linea.textContent.trim();
+          linea.style.height = linea.offsetHeight + 'px';
+          linea.style.whiteSpace = 'nowrap';
+          linea.style.overflow = 'hidden';
+          window.Revuelto.cambia(linea, texto, { dura: 1100 }).then(() => {
+            linea.style.height = '';
+            linea.style.whiteSpace = '';
+            linea.style.overflow = '';
+          });
+        });
+      }, 180);
+    });
+  }
 }
 
 
