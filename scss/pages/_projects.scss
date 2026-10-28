@@ -16,3 +16,53 @@
     z-index: 1;
   }
 }
+
+// ============================================================
+//   CASOS DE ESTUDIO — legibilidad del texto suelto (.cs-page)
+// ============================================================
+// En las páginas de proyecto el texto que NO va en cards (leads,
+// párrafos, listas) flotaba directo sobre la malla de puntos y
+// costaba leerlo. Añadimos un velo ("scrim") difuminado detrás del
+// contenido de cada sección y subimos el contraste del texto apagado.
+// Scopeado a .cs-page (en el <body>) para no tocar home ni sobre-mí.
+
+.cs-page {
+  .section-light,
+  .section-dark {
+    position: relative;
+
+    // Velo: se desvanece hacia los lados para que la malla siga
+    // viéndose en los márgenes y solo se calme bajo la lectura.
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(12, 12, 12, 0.66) 10%,
+        rgba(12, 12, 12, 0.66) 90%,
+        transparent 100%
+      );
+    }
+
+    // El contenido queda por encima del velo (las cards ya traen
+    // su propia superficie, así que el velo bajo ellas es inocuo).
+    > .container {
+      position: relative;
+      z-index: 1;
+    }
+
+    // Texto apagado con más contraste sobre el velo (#a8a49c → #c9c6be).
+    .text-muted {
+      color: #c9c6be !important;
+    }
+  }
+
+  // Realce sutil en los párrafos lead (el texto suelto más grande).
+  .cs-lead {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.55);
+  }
+}
