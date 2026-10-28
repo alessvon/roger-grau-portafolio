@@ -92,7 +92,14 @@
   }
 
   // el contenido reutiliza las clases .stack-card__* ya definidas
-  .stack-card__content { position: relative; z-index: 1; }
+  // sin el tope de 560px de la card apilada: la tarjeta del carrusel es ancha y
+  // el título largo ("Contratacion.pro") entra en una línea; la descripción
+  // conserva su propio max-width
+  .stack-card__content {
+    position: relative;
+    z-index: 1;
+    max-width: none;
+  }
 }
 
 // CTA como enlace real (en el carrusel la diapo no es un enlace completo,

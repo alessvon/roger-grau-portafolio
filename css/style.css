@@ -523,6 +523,7 @@ p {
 .pt-tarjeta .stack-card__content {
   position: relative;
   z-index: 1;
+  max-width: none;
 }
 
 a.stack-card__cta {
