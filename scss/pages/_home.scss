@@ -41,6 +41,13 @@
     font-weight: 800;
     text-wrap: balance;
   }
+
+  // Cada palabra del título en su propia línea: el efecto «Revuelto» anima
+  // ambas por separado y así los glifos de otros alfabetos no reflúyen el
+  // subtítulo. El JS fija la altura de cada línea mientras dura el efecto.
+  .hero-title-line {
+    display: block;
+  }
 }
 
 .hero-subtitle {

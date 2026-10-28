@@ -864,6 +864,9 @@ a.stack-card__cta:hover i, a.stack-card__cta:focus-visible i {
   font-weight: 800;
   text-wrap: balance;
 }
+#hero .hero-title-line {
+  display: block;
+}
 
 .hero-subtitle {
   font-family: "IBM Plex Mono", monospace;
